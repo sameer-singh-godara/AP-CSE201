@@ -31,7 +31,7 @@ public class Library {
     public void removeBook(int bookId, String title) {// taking assumption that we are removing just one copy of the book.
         int flag = 0;
         for (Book book : totalBooks){
-            if (book.getBookId() == bookId && title.equals(book.getTitle())){
+            if (book.getBookId() == bookId && title.equals(book.getTitle()) && book.getIssued() == 0){
                 totalBooks.remove(book);
                 System.out.println("---------------------------------");
                 System.out.println("Book with Title: " + title + " and Id: "+ bookId + " Removed Successfully");
