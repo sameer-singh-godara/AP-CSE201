@@ -193,8 +193,8 @@ public class LibraryManagementSystem {
                         if (name.equals(member.getName()) && member.getPhoneNumber() == phoneNumber) {
                             flag = 1;
                             System.out.println("\nWelcome " + name + " Member Id: " + member.getMemberId() + "\n");
-                            System.out.println("---------------------------------");
                             while (true) {
+                                System.out.println("---------------------------------");
                                 System.out.println("Member Menu:");
                                 System.out.println("1. List of Available Books");
                                 System.out.println("2. List of My Books");
