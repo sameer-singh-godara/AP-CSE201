@@ -47,13 +47,9 @@ public class LibraryManagementSystem {
 
                     if (choice2 == 1) {
                         Member member = new Member();
-//                        System.out.println("Enter Member ID: ");
-//                        int memberId = scanner.nextInt();
                         System.out.println("Enter Name: ");
                         String name = scanner.nextLine();
-//                        scanner.nextLine();
                         member.setName(name);
-
                         member.setMemberId(memberId);
                         memberId++;
                         System.out.println("Enter Phone Number: ");
@@ -185,7 +181,6 @@ public class LibraryManagementSystem {
                 System.out.println("Enter you Phone Number: ");
                 double phoneNumber = scanner.nextDouble();
                 scanner.nextLine();
-
                 List<Member> members = library.getAllMembers();
                 if (members.isEmpty()){
                     System.out.println("---------------------------------");
@@ -255,7 +250,7 @@ public class LibraryManagementSystem {
                                         library.issueBook(bId, title, member);
                                     }
                                     else if (numberOfBooksIssued == 1){
-                                        if ()
+
                                         System.out.println("First Pay the Fine of" + member.getFine() + " First Book then Issue another one");
                                     }
                                     else {
