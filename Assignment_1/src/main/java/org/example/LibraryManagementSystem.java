@@ -86,7 +86,7 @@ public class LibraryManagementSystem {
                         System.out.println("Enter no. of Copies: ");
                         int copies = scanner.nextInt();
                         scanner.nextLine();
-
+                        System.out.println("---------------------------------");
                         for (int i = 0; i < copies; i++) {
                             Book book = new Book();
                             book.setBookId(bookId);
@@ -94,9 +94,9 @@ public class LibraryManagementSystem {
                             book.setTitle(title);
                             book.setAuthor(author);
                             library.addBook(book);
-                            System.out.println("---------------------------------");
+//                            System.out.println("---------------------------------");
                             System.out.println("Book " + title + " Successfully Added in Database with Id " + book.getBookId());
-                            System.out.println("---------------------------------");
+//                            System.out.println("---------------------------------");
                         }
 
                     } else if (choice2 == 4) {
@@ -112,42 +112,47 @@ public class LibraryManagementSystem {
                     else if (choice2 == 5) {
                         List<Member> members = library.getAllMembers();
                         List<Book> books = library.getTotalBooks();
-                        System.out.println("The Registered Members are: ");
-                        int i = 1;
-                        for (Member member : members){
-                            int bookcount = 0;
-                            System.out.println(i + ". " + member.getName() + ": ");
-                            int fineAmount = 0;
-                            for (Book book : books) {
-                                if (book.getMember() == member){
-                                    int bookFine = 0;
-                                    System.out.println("Book Id: " + book.getBookId());
-                                    System.out.println("Title of the Book: " + book.getTitle());
-                                    System.out.println("Author of the Book: " + book.getAuthor());
-                                    bookFine = library.randomTime(book, member);
-                                    System.out.println("Fine Due to this Book is: " + bookFine);
-                                    fineAmount += bookFine;
-                                    System.out.println("\n");
-                                    bookcount++;
+                        int totalMembers = members.size();
+                        if (totalMembers > 0){
+                            System.out.println("The Registered Members in DataBase are: ");
+                            int i = 1;
+                            for (Member member : members) {
+                                int bookCount = 0;
+                                System.out.println(i + ". " + member.getName() + ": ");
+                                i++;
+                                int fineAmount = 0;
+                                for (Book book : books) {
+                                    if (book.getMember() == member) {
+                                        int bookFine = 0;
+                                        System.out.println("Book Id: " + book.getBookId());
+                                        System.out.println("Title of the Book: " + book.getTitle());
+                                        System.out.println("Author of the Book: " + book.getAuthor());
+                                        bookFine = library.randomTime(book, member);
+                                        System.out.println("Fine Due to Book " + book.getTitle() + "is: " + bookFine + "Rs");
+                                        fineAmount += bookFine;
+                                        System.out.println("\n");
+                                        bookCount++;
+                                    }
                                 }
+                                if (bookCount == 0) {
+                                    System.out.println("No book is issued by this Member Named: " + member.getName());
+                                }
+                                if (fineAmount == 0) {
+                                    System.out.println("Fine Amount is: " + fineAmount);
+                                } else {
+                                    System.out.println("Total Fine Amount is: " + fineAmount);
+                                }
+                                System.out.println("---------------------------------");
                             }
-                            if (bookcount == 0){
-                                System.out.println("No book is issued by this Member Named: " + member.getName());
-                            }
-                            if (fineAmount == 0){
-                                System.out.println("Fine Amount is: " + fineAmount);
-                            }
-                            else {
-                                System.out.println("Total Fine Amount is: " + fineAmount);
-                            }
-                            System.out.println("---------------------------------");
-
                         }
-//                        System.out.println("---------------------------------");
+                        else {
+                            System.out.println("No Members are Registered in the DataBase");
+                        }
 
-                    } else if (choice2 == 6) {
+                    }
+                    else if (choice2 == 6) {
                         List<Book> books = library.getTotalBooks();
-                        System.out.println("List of Books:");
+                        System.out.println("List of Books in DataBase:");
                         for (Book book : books) {
                             System.out.println("Book Id: " + book.getBookId());
                             System.out.println("Title of the Book: " + book.getTitle());
@@ -182,115 +187,128 @@ public class LibraryManagementSystem {
                 scanner.nextLine();
 
                 List<Member> members = library.getAllMembers();
-                for (Member member : members) {
-                    if (name.equals(member.getName()) && member.getPhoneNumber() == phoneNumber) {
-                        System.out.println("\nWelcome " + name + " Member Id: " + member.getMemberId() + "\n");
-                        while (true) {
-                            System.out.println("Member Menu:");
-                            System.out.println("1. List of Available Books");
-                            System.out.println("2. List of My Books");
-                            System.out.println("3. Issue a Book");
-                            System.out.println("4. Return a Book");
-                            System.out.println("5. Pay Fine");
-                            System.out.println("6. Back");
-                            System.out.print("Enter your choice: ");
+                if (members.isEmpty()){
+                    System.out.println("---------------------------------");
+                    System.out.println("Member with Name: " + name + " and Phone Number: " + (int) phoneNumber + " Doesn't exists in the DataBase");
+                    System.out.println("---------------------------------");
 
-                            int choice3 = scanner.nextInt();
-                            scanner.nextLine(); // Consume the newline character
-//                             Implement member menu
-                            if (choice3 == 1) {
-                                System.out.println("List of Available Books: ");
-                                List<Book> booksAvailable = library.getTotalBooks();
-                                for (Book book : booksAvailable) {
-                                    if (book.getIssued()==0){ // printing the books whose copies are greater than 0
-                                        System.out.println("Book Id: " + book.getBookId());
-                                        System.out.println("Title of the Book: " + book.getTitle());
-                                        System.out.println("Author of the Book: " + book.getAuthor());
-//                                        System.out.println("\n");
-                                        System.out.println("---------------------------------");
+                }
+                else {
+                    for (Member member : members) {
+                        if (name.equals(member.getName()) && member.getPhoneNumber() == phoneNumber) {
+                            System.out.println("\nWelcome " + name + " Member Id: " + member.getMemberId() + "\n");
+                            System.out.println("---------------------------------");
+                            while (true) {
+                                System.out.println("Member Menu:");
+                                System.out.println("1. List of Available Books");
+                                System.out.println("2. List of My Books");
+                                System.out.println("3. Issue a Book");
+                                System.out.println("4. Return a Book");
+                                System.out.println("5. Pay Fine");
+                                System.out.println("6. Back");
+                                System.out.println("---------------------------------");
+                                System.out.print("Enter your choice: ");
 
+                                int choice3 = scanner.nextInt();
+                                scanner.nextLine(); // Consume the newline character
+                                //                             Implement member menu
+                                System.out.println("---------------------------------");
+                                if (choice3 == 1) {
+                                    System.out.println("List of Available Books: ");
+                                    List<Book> booksAvailable = library.getTotalBooks();
+                                    for (Book book : booksAvailable) {
+                                        if (book.getIssued() == 0) { // printing the books whose copies are greater than 0
+                                            System.out.println("Book Id: " + book.getBookId());
+                                            System.out.println("Title of the Book: " + book.getTitle());
+                                            System.out.println("Author of the Book: " + book.getAuthor());
+                                            //                                        System.out.println("\n");
+                                            System.out.println("---------------------------------");
+
+                                        }
                                     }
-                                }
-                            }
-                            else if (choice3 == 2) {
-                                System.out.println("List of My Books: ");
-                                List<Book> MyBooks = library.getTotalBooks();
-                                for (Book book : MyBooks) {
-                                    if (book.getMember() == member) {
-                                        System.out.println("Book Id: " + book.getBookId());
-                                        System.out.println("Title of the Book: " + book.getTitle());
-                                        System.out.println("Author of the Book: " + book.getAuthor());
-                                        System.out.println("\n");
-                                        System.out.println("---------------------------------");
+                                } else if (choice3 == 2) {
+                                    System.out.println("List of My Books: ");
+                                    List<Book> MyBooks = library.getTotalBooks();
+                                    for (Book book : MyBooks) {
+                                        if (book.getMember() == member) {
+                                            System.out.println("Book Id: " + book.getBookId());
+                                            System.out.println("Title of the Book: " + book.getTitle());
+                                            System.out.println("Author of the Book: " + book.getAuthor());
+                                            System.out.println("\n");
+                                            System.out.println("---------------------------------");
+                                        }
+                                    }
+                                } else if (choice3 == 3) {
+                                    System.out.println("Enter Book Id: ");
+                                    int bId = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.println("Enter Title of Book: ");
+                                    String title = scanner.nextLine();
+                                    List<Book> booksAvailable = library.getTotalBooks();
+                                    int numberOfBooksIssued = 0;
+                                    for (Book book : booksAvailable) {
+                                        if (book.getMember() == member) {
+                                            numberOfBooksIssued++;
+                                        }
+                                    }
+                                    if (numberOfBooksIssued == 0) {
+                                        library.issueBook(bId, title, member);
+                                    }
+                                    else if (numberOfBooksIssued == 1){
+                                        if ()
+                                        System.out.println("First Pay the Fine of" + member.getFine() + " First Book then Issue another one");
                                     }
                                     else {
-                                        continue;
+                                        System.out.println("You Can't Issue New Book; First Return the Issued Books");
                                     }
                                 }
-                            }
-                            else if (choice3 == 3) {
-                                System.out.println("Enter Book Id: ");
-                                int bId = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Enter Title of Book: ");
-                                String title = scanner.nextLine();
-                                List<Book> booksAvailable = library.getTotalBooks();
-                                int numberOfBooksIssued = 0;
-                                for (Book book : booksAvailable) {
-                                    if (book.getMember() == member) {
-                                        numberOfBooksIssued++;
+                                else if (choice3 == 4) {
+                                    System.out.println("Enter Book Id: ");
+                                    int bId = scanner.nextInt();
+                                    scanner.nextLine();
+                                    System.out.println("Enter Title of Book: ");
+                                    String title = scanner.nextLine();
+                                    library.returnBook(bId, title, member);
+                                }
+                                else if (choice3 == 5) {
+                                    System.out.println("Your Fine is " + member.getFine() + "Rs");
+                                    if (member.getFine() > 0) {
+                                        System.out.println("Enter the Amount you want to pay: ");
+                                        int fineAmount = scanner.nextInt();
+                                        scanner.nextLine();
+                                        int leftAmount = member.getFine() - fineAmount;
+                                        member.setFine(leftAmount);
+                                        System.out.println("---------------------------------");
+                                        System.out.println(fineAmount + "Rs Amount paid Successfully");
+                                        System.out.println("Balance: " + leftAmount + "Rs");
                                     }
                                 }
-                                if (numberOfBooksIssued == 0){
-                                    library.issueBook(bId, title, member);
-                                }
-                                else if (numberOfBooksIssued == 1 && member.getFine() == 0){
-                                    library.issueBook(bId, title, member);
-                                }
-                                else if (numberOfBooksIssued == 1 && member.getFine() != 0) {
-                                    System.out.println("First Pay the Fine of" + member.getFine() + " First Book then Issue another one");
+                                else if (choice3 == 6) {
+                                    break;
                                 }
                                 else {
-                                    System.out.println("You Can't Issue New Book; First Return the Issued Books");
+                                    System.out.println("---------------------------------");
+                                    System.out.println("Wrong Choice, Try Again");
                                 }
-                            }
-                            else if (choice3 == 4){
-                                System.out.println("Enter Book Id: ");
-                                int bId = scanner.nextInt();
-                                scanner.nextLine();
-                                System.out.println("Enter Title of Book: ");
-                                String title = scanner.nextLine();
-                                library.returnBook(bId, title, member);
-                            }
-                            else if (choice3 == 5) {
-                                System.out.println("Your Fine is " + member.getFine());
-                                if (member.getFine()>0) {
-                                    System.out.println("Enter the Amount you want to pay: ");
-                                    int fineAmount = scanner.nextInt();
-                                    scanner.nextLine();
-                                    int leftAmount = member.getFine() - fineAmount;
-                                    member.setFine(leftAmount);
-                                }
-                            }
-                            else if (choice3 == 6){
-                                break;
-                            }
-                            else {
-                                System.out.println("Wrong Choice, Try Again");
                             }
                         }
-                    }
-                    else {
-                        System.out.println("Member with Name: " + name + " and Phone Number: " + phoneNumber + "Doesn't exists");
+                        else {
+                            System.out.println("---------------------------------");
+                            System.out.println("Member with Name: " + name + " and Phone Number: " + (int) phoneNumber + " Doesn't exists in DataBase");
+                            System.out.println("---------------------------------");
 
+                        }
                     }
                 }
             }
             else if (choice1 == 3) {
                 System.out.println("Thanks for visiting!");
+                System.out.println("---------------------------------");
                 System.exit(0);
             }
             else {
+//                System.out.println("---------------------------------");
+
                 System.out.println("Invalid choice. Please try again.");
             }
         }
