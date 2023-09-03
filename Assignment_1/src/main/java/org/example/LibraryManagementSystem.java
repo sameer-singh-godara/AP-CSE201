@@ -12,7 +12,7 @@ public class LibraryManagementSystem {
         int bookId = 1;
         int memberId = 1;
         System.out.println("---------------------------------");
-        System.out.println("Library Portal Initialized….");
+        System.out.println("Library Portal Initialized...");
         System.out.println("---------------------------------");
 
         while (true) {
@@ -189,8 +189,10 @@ public class LibraryManagementSystem {
 
                 }
                 else {
+                    int flag = 0;
                     for (Member member : members) {
                         if (name.equals(member.getName()) && member.getPhoneNumber() == phoneNumber) {
+                            flag = 1;
                             System.out.println("\nWelcome " + name + " Member Id: " + member.getMemberId() + "\n");
                             System.out.println("---------------------------------");
                             while (true) {
@@ -287,12 +289,17 @@ public class LibraryManagementSystem {
                                 }
                             }
                         }
-                        else {
-                            System.out.println("---------------------------------");
-                            System.out.println("Member with Name: " + name + " and Phone Number: " + (int) phoneNumber + " Doesn't exists in DataBase");
-                            System.out.println("---------------------------------");
-
-                        }
+//                        else {
+//                            System.out.println("---------------------------------");
+//                            System.out.println("Member with Name: " + name + " and Phone Number: " + (int) phoneNumber + " Doesn't exists in DataBase");
+//                            System.out.println("---------------------------------");
+//
+//                        }
+                    }
+                    if (flag == 0){
+                        System.out.println("---------------------------------");
+                        System.out.println("Member with Name: " + name + " and Phone Number: " + (int) phoneNumber + " Doesn't exists in DataBase");
+                        System.out.println("---------------------------------");
                     }
                 }
             }
