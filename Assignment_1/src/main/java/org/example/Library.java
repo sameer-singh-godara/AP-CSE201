@@ -41,7 +41,7 @@ public class Library {
         }
         if (flag == 0) {
             System.out.println("---------------------------------");
-            System.out.println("Book with Title: " + title + " and Id: " + bookId + " Doesn't Exists.");
+            System.out.println("Book with Title: " + title + " and Id: " + bookId + " Not Removed Successfully");
         }
     }
 
