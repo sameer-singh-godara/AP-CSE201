@@ -106,9 +106,11 @@ public class Library {
 
 
     public void returnBook(int bookId, String title, Member member){
+        int flag = 0;
         for (Book book : totalBooks){
             if (book.getBookId() == bookId && title.equals(book.getTitle()) && book.getIssued() == 1 && (member.getName()).equals(book.getMember().getName())){
                 book.setIssued(0);
+                flag = 1;
                 book.setMember(null);
                 Instant issueTime = book.getIssueTime();
                 Instant currentTime = Instant.now();
@@ -117,6 +119,7 @@ public class Library {
                     int fineAmount = (int) ((timeAfterDueDate - 10)*3);
                     member.setFine(fineAmount);
                     System.out.println("---------------------------------");
+
                     System.out.println("Book with Title: " + book.getTitle() + " with Id: " + book.getBookId() + " Has been Returned Successfully, Please Pay Fine of Amount of " + member.getFine() + " for late submission of Book");
                 }
                 else {
@@ -125,6 +128,11 @@ public class Library {
                 }
             }
         }
+        if (flag == 0){
+            System.out.println("Book with Title: " + title + " with Id: " + bookId + " Has Not been Returned Successfully");
+        }
+        System.out.println("---------------------------------");
+
     }
 
     public int randomTime(Book book, Member member) {

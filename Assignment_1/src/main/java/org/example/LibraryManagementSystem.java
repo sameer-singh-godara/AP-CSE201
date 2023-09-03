@@ -119,7 +119,7 @@ public class LibraryManagementSystem {
                                 int fineAmount = 0;
                                 for (Book book : books) {
                                     if (book.getMember() == member) {
-                                        int bookFine = 0;
+                                        int bookFine;
                                         System.out.println("Book Id: " + book.getBookId());
                                         System.out.println("Title of the Book: " + book.getTitle());
                                         System.out.println("Author of the Book: " + book.getAuthor());
@@ -134,9 +134,9 @@ public class LibraryManagementSystem {
                                     System.out.println("No book is issued by this Member Named: " + member.getName());
                                 }
                                 if (fineAmount == 0) {
-                                    System.out.println("Fine Amount is: " + fineAmount);
+                                    System.out.println("Fine Amount is: " + fineAmount + "Rs");
                                 } else {
-                                    System.out.println("Total Fine Amount is: " + fineAmount);
+                                    System.out.println("Total Fine Amount is: " + fineAmount + "Rs");
                                 }
                                 System.out.println("---------------------------------");
                             }
@@ -160,7 +160,6 @@ public class LibraryManagementSystem {
                             else {
                                 System.out.println(book.getTitle() + " is Not Issued");
                             }
-                            System.out.println("\n");
                             System.out.println("---------------------------------");
 
                         }
@@ -218,22 +217,28 @@ public class LibraryManagementSystem {
                                             System.out.println("Book Id: " + book.getBookId());
                                             System.out.println("Title of the Book: " + book.getTitle());
                                             System.out.println("Author of the Book: " + book.getAuthor());
-                                            //                                        System.out.println("\n");
                                             System.out.println("---------------------------------");
 
                                         }
                                     }
                                 } else if (choice3 == 2) {
                                     System.out.println("List of My Books: ");
+                                    int flag1 = 0;
                                     List<Book> MyBooks = library.getTotalBooks();
                                     for (Book book : MyBooks) {
                                         if (book.getMember() == member) {
+                                            flag1 = 1;
                                             System.out.println("Book Id: " + book.getBookId());
                                             System.out.println("Title of the Book: " + book.getTitle());
                                             System.out.println("Author of the Book: " + book.getAuthor());
-                                            System.out.println("\n");
+
                                             System.out.println("---------------------------------");
                                         }
+                                    }
+                                    if (flag1 == 0){
+                                        System.out.println("There are no Issued Books with you");
+                                        System.out.println("---------------------------------");
+
                                     }
                                 } else if (choice3 == 3) {
                                     System.out.println("Enter Book Id: ");
@@ -243,17 +248,25 @@ public class LibraryManagementSystem {
                                     String title = scanner.nextLine();
                                     List<Book> booksAvailable = library.getTotalBooks();
                                     int numberOfBooksIssued = 0;
+                                    Book book1 = null;
                                     for (Book book : booksAvailable) {
                                         if (book.getMember() == member) {
                                             numberOfBooksIssued++;
+                                            book1 = book;
                                         }
                                     }
                                     if (numberOfBooksIssued == 0) {
                                         library.issueBook(bId, title, member);
                                     }
-                                    else if (numberOfBooksIssued == 1){
-
-                                        System.out.println("First Pay the Fine of" + member.getFine() + " First Book then Issue another one");
+                                    else if (numberOfBooksIssued == 1) {
+                                        int bookFineTemp;
+                                        bookFineTemp = library.randomTime(book1, member);
+                                        if (bookFineTemp == 0) {
+                                            library.issueBook(bId, title, member);
+                                        }
+                                        else {
+                                            System.out.println("First Pay the Fine of " + bookFineTemp + " First Book then Issue another one");
+                                        }
                                     }
                                     else {
                                         System.out.println("You Can't Issue New Book; First Return the Issued Books");
