@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
-
     private final List<Animal> animals;
+    private final List<Attraction> attractions;
     private final List<Visitor> visitors;
+    private final List<String> feedbacks;
 
     public Zoo() {
         animals = new ArrayList<>();
         visitors = new ArrayList<>();
+        feedbacks = new ArrayList<>();
+        attractions = new ArrayList<>();
     }
 
 
@@ -24,16 +27,23 @@ public class Zoo {
     public List<Visitor> getVisitors() {
         return visitors;
     }
+    public List<String> getFeedbacks() {
+        return feedbacks;
+    }
+    public List<Attraction> getAttractions() {
+        return attractions;
+    }
 
-    public void addVisitor(Visitor visitor){
+    public void addVisitor(Visitor visitor) {
         visitors.add(visitor);
     }
-    public void addAnimal(Animal animal){
-        animals.add(animal);
+
+    public void addFeedback(String abc) {
+        feedbacks.add(abc);
     }
 
-    public void registerVisitor(Visitor visitor) {
-        visitors.add(visitor);
+    public void addAttraction(Attraction attraction) {
+        attractions.add(attraction);
     }
 
 
@@ -60,4 +70,70 @@ public class Zoo {
         System.out.println("InValid Email ID Try Again");
         return false;
     }
+
+    public void updateAttractionName(int idInput, String nameNewAtt) {
+        int flag = 0;
+        for (Attraction attraction : attractions){
+            if (attraction.getId() == idInput){
+                attraction.setName(nameNewAtt);
+                System.out.println("Name of Attraction has been updated to " + nameNewAtt);
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0){
+            System.out.println("Error in Updating Name as ID Doesn't Exist");
+        }
+
+    }
+        public void updateAttractionDescription(int idInput, String descriptionNewAtt) {
+            int flag = 0;
+            for (Attraction attraction : attractions){
+                if (attraction.getId() == idInput){
+                    attraction.setDescription(descriptionNewAtt);
+                    System.out.println("Description of Attraction has been updated to: " + descriptionNewAtt);
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                System.out.println("Error in Updating Description as ID Doesn't Exist");
+            }
+
+        }
+        public void updateAttractionPrice(int idInput, int priceNewAtt) {
+            int flag = 0;
+            for (Attraction attraction : attractions){
+                if (attraction.getId() == idInput){
+                    attraction.setPrice(priceNewAtt);
+                    System.out.println("Price of Attraction has been updated to " + priceNewAtt);
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                System.out.println("Error in Updating Price as ID Doesn't Exist");
+            }
+
+        }
+        public void updateAttractionOpen(int idInput, int openNewAtt) {
+            int flag = 0;
+            for (Attraction attraction : attractions){
+                if (attraction.getId() == idInput){
+                    attraction.setAvailability(openNewAtt);
+                    if (openNewAtt == 1){
+                        System.out.println("Availability of Attraction has been updated to Open" + attraction.isOpen());
+                    }
+                    else {
+                        System.out.println("Availability of Attraction has been updated to Closed" + attraction.isOpen());
+                    }
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                System.out.println("Error in Updating Availability as ID Doesn't Exist");
+            }
+
+        }
 }

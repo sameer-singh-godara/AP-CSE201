@@ -189,7 +189,7 @@ public class LibraryManagementSystem {
                 }
                 else {
                     int flag = 0;
-                    for (Member member : members) {
+                    for (Member member : members) { 
                         if (name.equals(member.getName()) && member.getPhoneNumber() == phoneNumber) {
                             flag = 1;
                             System.out.println("\nWelcome " + name + " Member Id: " + member.getMemberId() + "\n");
