@@ -17,7 +17,32 @@ public class Attraction implements Events{
         this.availability = availability;
         this.numberOfVisitors = numberOfVisitors;
     }
+    @Override
+    public String getDescription() {
+        return description;
+    }
 
+    @Override
+    public void name() {
+        System.out.println(this.name);
+    }
+
+    @Override
+    public void id() {
+        System.out.println(this.id);
+    }
+
+    @Override
+    public void description() {
+        System.out.println(this.description);
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -26,17 +51,10 @@ public class Attraction implements Events{
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -64,20 +82,5 @@ public class Attraction implements Events{
 
     public void setNumberOfVisitors(int numberOfVisitors) {
         this.numberOfVisitors = numberOfVisitors;
-    }
-
-    @Override
-    public void description() {
-        System.out.println(this.description);
-    }
-
-    @Override
-    public int id() {
-        return 0;
-    }
-
-    @Override
-    public void name() {
-        System.out.println(this.name);
     }
 }

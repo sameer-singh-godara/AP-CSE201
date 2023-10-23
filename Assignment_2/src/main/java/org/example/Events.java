@@ -1,7 +1,11 @@
 package org.example;
 
 public interface Events {
-    void description();
-    int id();
+    String getDescription();
+    int getId();
+    String getName();
+
     void name();
+    void id();
+    void description();
 }

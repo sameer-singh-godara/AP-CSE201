@@ -15,6 +15,32 @@ public class Animal implements Events{
         this.type = type;
     }
 
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void name() {
+        System.out.println(this.name);
+    }
+
+    @Override
+    public void id() {
+        System.out.println(this.id);
+    }
+
+    @Override
+    public void description() {
+        System.out.println(this.description);
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -23,16 +49,8 @@ public class Animal implements Events{
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
@@ -55,18 +73,5 @@ public class Animal implements Events{
         this.type = type;
     }
 
-    @Override
-    public void description() {
-        System.out.println(this.description);
-    }
 
-    @Override
-    public int id() {
-        return this.id;
-    }
-
-    @Override
-    public void name() {
-        System.out.println(this.name);
-    }
 }

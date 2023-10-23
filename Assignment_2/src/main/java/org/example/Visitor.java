@@ -1,20 +1,27 @@
 package org.example;
 
-public class Visitor {
+public class Visitor extends Admin{
     private String name;
     private int age;
     private String phoneNumber;
     private int balance;
     private String email;
-    private String password;
+//    private String password;
+    private int id;
+    private int membership; // 0 for no membership
+    // 1 for basic membership
+    // 2 for premium membership
 
-    public Visitor(String name, int age, String phoneNumber, int balance, String email, String password) {
+
+    public Visitor(String name, int age, String phoneNumber, int balance, String email, String password, int id) {
+        super(email, password);
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.balance = balance;
         this.email = email;
-        this.password = password;
+        this.id = id;
+        this.membership = 0;
     }
 
     public String getName() {
@@ -57,11 +64,19 @@ public class Visitor {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public int getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getMembership() {
+        return membership;
+    }
+
+    public void setMembership(int membership) {
+        this.membership = membership;
     }
 }
