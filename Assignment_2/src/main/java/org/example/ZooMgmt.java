@@ -384,7 +384,8 @@ public class ZooMgmt{
                                         System.out.println("6. Visit Animals");
                                         System.out.println("7. Visit Attraction");
                                         System.out.println("8. Leave Feedback");
-                                        System.out.println("9. Exit");
+                                        System.out.println("9. Recharge Balance");
+                                        System.out.println("10. Exit");
 
                                         int thirdChoiceV = sc.nextInt();
                                         sc.nextLine();
@@ -393,7 +394,78 @@ public class ZooMgmt{
                                             System.out.println("Explore Zoo");
                                         }
                                         else if (thirdChoiceV == 2) {
-                                            System.out.println("2");
+                                            while (true) {
+                                                if (visitor.getMembership() == 0) {
+                                                    System.out.println("Buy Membership:");
+                                                    System.out.println("1. Basic Membership (₹20)");
+                                                    System.out.println("2. Premium Membership (₹50)");
+                                                    System.out.println("3. Exit");
+                                                    int fourthChoiceV = sc.nextInt();
+                                                    sc.nextLine();
+                                                    if (fourthChoiceV == 1) {
+                                                        if (visitor.getBalance()>=20){
+                                                            visitor.setMembership(1);
+                                                            int balanceV = visitor.getBalance();
+                                                            visitor.setBalance(balanceV - 20);
+                                                            System.out.println("You have Successfully Purchased Basic Membership");
+                                                            break;
+                                                        }
+                                                        else {
+                                                            System.out.println("Low Balance Recharge Your Balance");
+                                                            break;
+                                                        }
+                                                    }
+                                                    else if (fourthChoiceV == 2) {
+                                                        if (visitor.getBalance()>=50){
+                                                            visitor.setMembership(2);
+                                                            int balanceV = visitor.getBalance();
+                                                            visitor.setBalance(balanceV - 50);
+                                                            System.out.println("You have Successfully Purchased Premium Membership");
+                                                            break;
+                                                        }
+                                                        else {
+                                                            System.out.println("Low Balance Recharge Your Balance");
+                                                            break;
+                                                        }
+                                                    }
+                                                    else if (fourthChoiceV == 3){
+                                                        break;
+                                                    }
+                                                    else {
+                                                        System.out.println("Wrong Command Try Again");
+                                                    }
+                                                }
+                                                else if (visitor.getMembership() == 1) {
+                                                    System.out.println("Upgrade Membership, you currently have Basic Membership:");
+                                                    System.out.println("1. Premium Membership (₹30) (Only the difference between both membership is to be paid)");
+                                                    System.out.println("2. Exit");
+                                                    int fourthChoiceV = sc.nextInt();
+                                                    sc.nextLine();
+                                                    if (fourthChoiceV == 1) {
+                                                        if (visitor.getBalance()>=30){
+                                                            visitor.setMembership(2);
+                                                            int balanceV = visitor.getBalance();
+                                                            visitor.setBalance(balanceV - 30);
+                                                            System.out.println("You have Successfully Upgraded to Premium Membership");
+                                                            break;
+                                                        }
+                                                        else {
+                                                            System.out.println("Low Balance Recharge Your Balance");
+                                                            break;
+                                                        }
+                                                    }
+                                                    else if (fourthChoiceV == 2) {
+                                                        break;
+                                                    }
+                                                    else {
+                                                        System.out.println("Wrong Command Try Again");
+                                                    }
+                                                }
+                                                else if (visitor.getMembership() == 2) {
+                                                    System.out.println("You Already have Premium Membership");
+                                                    break;
+                                                }
+                                            }
                                         }
                                         else if (thirdChoiceV == 3) {
                                             System.out.println("3");
@@ -418,8 +490,19 @@ public class ZooMgmt{
                                             feedbackId++;
                                         }
                                         else if (thirdChoiceV == 9) {
+                                            System.out.println("Recharge Your Balance:");
+                                            System.out.println("Enter the Amount");
+                                            int recharge = sc.nextInt();
+                                            sc.nextLine();
+                                            recharge += visitor.getBalance();
+                                            visitor.setBalance(recharge);
+                                        }
+                                        else if (thirdChoiceV == 10) {
                                             System.out.println("Exited Successfully");
                                             break;
+                                        }
+                                        else {
+                                            System.out.println("Wrong Command Try Again");
                                         }
                                     }
                                 }
