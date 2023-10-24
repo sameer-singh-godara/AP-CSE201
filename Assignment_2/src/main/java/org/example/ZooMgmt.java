@@ -446,8 +446,7 @@ public class ZooMgmt{
                                                         System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                         int fifthChoiceV = sc.nextInt();
                                                         if (animals.containsKey(fifthChoiceV)){
-                                                            System.out.println(animals.get(fifthChoiceV).getName() + ":");
-                                                            System.out.println(animals.get(fifthChoiceV).getDescription());
+                                                            System.out.println(animals.get(fifthChoiceV).getName() + ":" + animals.get(fifthChoiceV).getDescription());
                                                         }
                                                         else {
                                                             System.out.println("You Entered Wrong Command, Hence Exited");
@@ -477,8 +476,7 @@ public class ZooMgmt{
                                                         System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                         int fifthChoiceV = sc.nextInt();
                                                         if (attractions.containsKey(fifthChoiceV)) {
-                                                            System.out.println(attractions.get(fifthChoiceV).getName() + ":");
-                                                            System.out.println(attractions.get(fifthChoiceV).getDescription());
+                                                            System.out.println(attractions.get(fifthChoiceV).getName() + ":" + attractions.get(fifthChoiceV).getDescription());
                                                         }
                                                         else {
                                                             System.out.println("You Entered Wrong Command, Hence Exited");
@@ -622,10 +620,94 @@ public class ZooMgmt{
                                             System.out.println("5");
                                         }
                                         else if (thirdChoiceV == 6) {
-                                            System.out.println("6");
+                                            while (true){
+                                                System.out.println("Animals in the Zoo are as follows");
+                                                Animal maxKey = null;
+                                                Map<Integer, Animal> animalMap = zoo.getAnimals();
+                                                HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                                for  (Map.Entry<Integer, Animal> entry : animalMap.entrySet()){
+                                                    maxKey = entry.getValue();
+                                                    if (maxKey!=null){
+                                                        System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                    }
+                                                }
+                                                if (maxKey!=null){
+                                                    System.out.println("Which Animal Do You Want to Visit (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                    int fourthChoiceV = sc.nextInt();
+                                                    if (animals.containsKey(fourthChoiceV)){
+                                                        while (true) {
+                                                            System.out.println("What you want to do with " + animals.get(fourthChoiceV).getName());
+                                                            System.out.println("1. Feed " + animals.get(fourthChoiceV).getName());
+                                                            System.out.println("2. Read about " + animals.get(fourthChoiceV).getName());
+                                                            System.out.println("3. Exit");
+                                                            int fifthChoiceV = sc.nextInt();
+                                                            if (fifthChoiceV == 1) {
+                                                                System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getFeed());
+                                                            } else if (fifthChoiceV == 2) {
+                                                                System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getDescription());
+                                                            } else if (fifthChoiceV == 3) {
+                                                                System.out.println("Going Back Successfully");
+                                                                break;
+                                                            } else {
+                                                                System.out.println("You Entered Wrong Command, Hence Exited");
+                                                            }
+                                                        }
+                                                    }
+                                                    else {
+                                                        System.out.println("You Entered Wrong Command, Hence Exited");
+                                                        break;
+                                                    }
+                                                }
+                                                else {
+                                                    System.out.println("There are no Animals in the Zoo");
+                                                }
+                                            }
                                         }
                                         else if (thirdChoiceV == 7) {
-                                            System.out.println("7");
+                                            while (true) {
+                                                System.out.println("View Attraction");
+                                                Attraction maxKey = null;
+                                                Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                                HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                                for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
+                                                    maxKey = entry.getValue();
+                                                    if (maxKey != null) {
+                                                        if (maxKey.isOpen() == 1) {
+                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
+                                                        } else if (maxKey.isOpen() == 0) {
+                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
+                                                        }
+                                                    }
+                                                }
+                                                if (maxKey != null) {
+                                                    System.out.println("Enter The Attraction ID You Want To Visit (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                    int fourthChoiceV = sc.nextInt();
+                                                    if (attractions.containsKey(fourthChoiceV)) {
+                                                        if ((visitor.getAttractionsPurchased()).contains(attractions.get(fourthChoiceV)) || visitor.getMembership() == 2) {
+                                                            if (visitor.getMembership() == 2) {
+                                                                System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Thank you for being Premium Member");
+                                                            } else {
+                                                                System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
+                                                                (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
+                                                                 // System.out.println(visitor.getAttractionsPurchased());
+                                                            }
+                                                            int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
+                                                            numberOfVisitorsForAttraction++;
+                                                            attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
+                                                        }
+                                                        else {
+                                                            System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
+                                                            break;
+                                                        }
+                                                    } else {
+                                                        System.out.println("You Entered Wrong Command, Hence Exited");
+                                                        break;
+                                                    }
+                                                } else {
+                                                    System.out.println("There are no Attraction in the Zoo");
+                                                    break;
+                                                }
+                                            }
                                         }
                                         else if (thirdChoiceV == 8) {
                                             System.out.println("Enter Your Feedback");
