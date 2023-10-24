@@ -113,7 +113,7 @@ public class Zoo{
         }
         public void updateAttractionOpen(int idInput, int openNewAtt) {
             if (!attractions.containsKey(idInput)){
-                System.out.println("Error in Updating Name as ID Doesn't Exist");
+                System.out.println("Error in Updating Name as ID " + idInput + " Doesn't Exist");
                 return;
             }
             Attraction attraction = attractions.get(idInput);
@@ -121,10 +121,10 @@ public class Zoo{
             if (attraction.getId() == idInput){
                 attraction.setAvailability(openNewAtt);
                 if (openNewAtt == 1){
-                System.out.println("Availability of Attraction has been updated to open : " + openNewAtt);
+                System.out.println("Availability of Attraction with ID " + idInput + " has been updated to open : " + openNewAtt);
                 }
                 else {
-                    System.out.println("Availability of Attraction has been updated to closed : " + openNewAtt);
+                    System.out.println("Availability of Attraction with ID " + idInput + " has been updated to closed : " + openNewAtt);
                 }
             }
 

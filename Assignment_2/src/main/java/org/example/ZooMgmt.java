@@ -48,60 +48,209 @@ public class ZooMgmt{
                         int secondChoiceA = sc.nextInt();
                         sc.nextLine();
                         if (secondChoiceA == 1){
-                            System.out.println("--------------");
-                            System.out.println("Manage Attractions");
-                            System.out.println("1. Add Attraction");
-                            System.out.println("2. Update Attraction");
-                            System.out.println("3. Remove Attraction");
-                            System.out.println("4. Exit");
-
-                            int thirdChoiceA = sc.nextInt();
-                            sc.nextLine();
-
-                            if (thirdChoiceA == 1){
+                            while (true) {
                                 System.out.println("--------------");
-                                System.out.println("Enter Attraction Name");
-                                String nameAtt = sc.nextLine();
-                                System.out.println("Enter Attraction Description");
-                                String descriptionAtt = sc.nextLine();
-                                System.out.println("Enter Attraction Price");
-                                int priceAtt = sc.nextInt();
+                                System.out.println("Manage Attractions");
+                                System.out.println("1. Add Attraction");
+                                System.out.println("2. Update Attraction");
+                                System.out.println("3. Remove Attraction");
+                                System.out.println("4. Exit");
+
+                                int thirdChoiceA = sc.nextInt();
                                 sc.nextLine();
-                                Attraction attraction = new Attraction(nameAtt, descriptionAtt, attractionId, priceAtt, 0, 0);
-                                zoo.addAttraction(attraction);
-                                System.out.println("The Attraction is Registered Successfully with ID : " + attractionId);
-                                attractionId++;
 
+                                if (thirdChoiceA == 1) {
+                                    System.out.println("--------------");
+                                    System.out.println("Enter Attraction Name");
+                                    String nameAtt = sc.nextLine();
+                                    System.out.println("Enter Attraction Description");
+                                    String descriptionAtt = sc.nextLine();
+                                    System.out.println("Enter Attraction Price");
+                                    int priceAtt = sc.nextInt();
+                                    sc.nextLine();
+                                    Attraction attraction = new Attraction(nameAtt, descriptionAtt, attractionId, priceAtt, 0, 0);
+                                    zoo.addAttraction(attraction);
+                                    System.out.println("The Attraction is Registered Successfully with ID : " + attractionId);
+                                    attractionId++;
+
+                                } else if (thirdChoiceA == 2) {
+                                    while (true) {
+                                        System.out.println("--------------");
+                                        System.out.println("Update Attraction");
+                                        System.out.println("1. Update Name");
+                                        System.out.println("2. Update Description");
+                                        System.out.println("3. Update Price");
+                                        System.out.println("4. Update Availability");
+                                        System.out.println("5. Exit");
+
+                                        int fourthChoiceA = sc.nextInt();
+                                        sc.nextLine();
+                                        if (fourthChoiceA == 1) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Attraction ID");
+                                            int idInput = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Enter New Attraction Name");
+                                            String nameNewAtt = sc.nextLine();
+                                            zoo.updateAttractionName(idInput, nameNewAtt);
+                                        } else if (fourthChoiceA == 2) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Attraction ID");
+                                            int idInput = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Enter New Attraction Description");
+                                            String descriptionNewAtt = sc.nextLine();
+                                            zoo.updateAttractionDescription(idInput, descriptionNewAtt);
+                                        } else if (fourthChoiceA == 3) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Attraction ID");
+                                            int idInput = sc.nextInt();
+                                            System.out.println("Enter New Attraction Price");
+                                            int priceNewAtt = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updateAttractionPrice(idInput, priceNewAtt);
+                                        } else if (fourthChoiceA == 4) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Attraction ID");
+                                            int idInput = sc.nextInt();
+                                            System.out.println("Enter New Attraction Availability (write 1: for open and 0: for closed)");
+                                            int openNewAtt = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updateAttractionOpen(idInput, openNewAtt);
+                                        } else if (fourthChoiceA == 5) {
+                                            break;
+                                        } else {
+                                            System.out.println("Try Again Wrong Command");
+                                        }
+                                    }
+                                }
+                                else if (thirdChoiceA == 3) {
+                                    System.out.println("--------------");
+                                    System.out.println("Enter Attraction ID");
+                                    int idInput = sc.nextInt();
+                                    sc.nextLine();
+                                    zoo.removeAttraction(idInput);
+                                }
+                                else if (thirdChoiceA == 4) {
+                                    System.out.println("You have successfully gone to back menu");
+                                    break;
+                                }
+                                else {
+                                    System.out.println("Wrong Command Try Again");
+                                }
                             }
-                            else if (thirdChoiceA == 2){
+                        }
+                        else if (secondChoiceA == 2) {
+                            while (true) {
                                 System.out.println("--------------");
-                                System.out.println("1. Update Name");
-                                System.out.println("2. Update Description");
-                                System.out.println("3. Update Price");
-                                System.out.println("4. Update Availability");
-                                System.out.println("5. Exit");
+                                System.out.println("Manage Animals");
+                                System.out.println("1. Add Animal");
+                                System.out.println("2. Update Animal");
+                                System.out.println("3. Remove Animal");
+                                System.out.println("4. Exit");
+
+                                int thirdChoiceA = sc.nextInt();
+                                sc.nextLine();
+
+                                if (thirdChoiceA == 1) {
+                                    System.out.println("--------------");
+                                    System.out.println("Enter Animal Name");
+                                    String nameAnimal = sc.nextLine();
+                                    System.out.println("Enter Animal Description");
+                                    String descriptionAnimal = sc.nextLine();
+                                    System.out.println("Enter Animal Type");
+                                    String typeAnimal = sc.nextLine();
+                                    System.out.println("Enter Animal Sound");
+                                    String feedAnimal = sc.nextLine();
+                                    Animal animal = new Animal(nameAnimal, animalId, descriptionAnimal, feedAnimal, typeAnimal);
+                                    zoo.addAnimal(animal);
+                                    System.out.println("The Animal is Registered Successfully with ID : " + animalId);
+                                    animalId++;
+
+                                } else if (thirdChoiceA == 2) {
+                                    while (true) {
+                                        System.out.println("--------------");
+                                        System.out.println("Update Animal");
+                                        System.out.println("1. Update Name");
+                                        System.out.println("2. Update Description");
+                                        System.out.println("3. Update Sound");
+                                        System.out.println("4. Update Type");
+                                        System.out.println("5. Exit");
+
+                                        int fourthChoiceA = sc.nextInt();
+                                        sc.nextLine();
+                                        if (fourthChoiceA == 1) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Animal ID");
+                                            int idInput = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Enter New Animal Name");
+                                            String nameNewAnimal = sc.nextLine();
+                                            zoo.updateAnimalName(idInput, nameNewAnimal);
+                                        }
+                                        else if (fourthChoiceA == 2) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Animal ID");
+                                            int idInput = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Enter New Animal Description");
+                                            String descriptionNewAnimal = sc.nextLine();
+                                            zoo.updateAnimalDescription(idInput, descriptionNewAnimal);
+                                        }
+                                        else if (fourthChoiceA == 3) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Animal ID");
+                                            int idInput = sc.nextInt();
+                                            System.out.println("Enter New Attraction Sound");
+                                            String soundNewAnimal = sc.nextLine();
+                                            sc.nextLine();
+                                            zoo.updateAnimalSound(idInput, soundNewAnimal);
+                                        }
+                                        else if (fourthChoiceA == 4) {
+                                            System.out.println("--------------");
+                                            System.out.println("Enter Animal ID");
+                                            int idInput = sc.nextInt();
+                                            System.out.println("Enter New Animal Type");
+                                            String typeNewAnimal = sc.nextLine();
+                                            sc.nextLine();
+                                            zoo.updateAnimalType(idInput, typeNewAnimal);
+                                        }
+                                        else if (fourthChoiceA == 5) {
+                                            break;
+                                        }
+                                        else {
+                                            System.out.println("Try Again Wrong Command");
+                                        }
+                                    }
+                                }
+                                else if (thirdChoiceA == 3) {
+                                    System.out.println("--------------");
+                                    System.out.println("Enter Animal ID");
+                                    int idInput = sc.nextInt();
+                                    sc.nextLine();
+                                    zoo.removeAttraction(idInput);
+                                }
+                                else if (thirdChoiceA == 4) {
+                                    System.out.println("You have successfully gone to back menu");
+                                    break;
+                                }
+                                else {
+                                    System.out.println("Wrong Command Try Again");
+                                }
+                            }
+                        }
+                        ///////////
+                        else if (secondChoiceA == 3) {
+                            while (true) {
+                                System.out.println("--------------");
+                                System.out.println("Schedule Events:");
+                                System.out.println("1. Set Price");
+                                System.out.println("2. Set Availability");
+                                System.out.println("3. Exit");
 
                                 int fourthChoiceA = sc.nextInt();
                                 sc.nextLine();
                                 if (fourthChoiceA == 1) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Attraction ID");
-                                    int idInput = sc.nextInt();
-                                    sc.nextLine();
-                                    System.out.println("Enter New Attraction Name");
-                                    String nameNewAtt = sc.nextLine();
-                                    zoo.updateAttractionName(idInput, nameNewAtt);
-                                }
-                                else if (fourthChoiceA == 2) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Attraction ID");
-                                    int idInput = sc.nextInt();
-                                    sc.nextLine();
-                                    System.out.println("Enter New Attraction Description");
-                                    String descriptionNewAtt = sc.nextLine();
-                                    zoo.updateAttractionDescription(idInput, descriptionNewAtt);
-                                }
-                                else if (fourthChoiceA == 3) {
                                     System.out.println("--------------");
                                     System.out.println("Enter Attraction ID");
                                     int idInput = sc.nextInt();
@@ -109,8 +258,7 @@ public class ZooMgmt{
                                     int priceNewAtt = sc.nextInt();
                                     sc.nextLine();
                                     zoo.updateAttractionPrice(idInput, priceNewAtt);
-                                }
-                                else if (fourthChoiceA == 4) {
+                                } else if (fourthChoiceA == 2) {
                                     System.out.println("--------------");
                                     System.out.println("Enter Attraction ID");
                                     int idInput = sc.nextInt();
@@ -118,127 +266,12 @@ public class ZooMgmt{
                                     int openNewAtt = sc.nextInt();
                                     sc.nextLine();
                                     zoo.updateAttractionOpen(idInput, openNewAtt);
-                                }
-                                else if (fourthChoiceA == 5) {
+                                } else if (fourthChoiceA == 3) {
                                     break;
-                                }
-                                else {
+                                } else {
                                     System.out.println("Try Again Wrong Command");
                                 }
                             }
-                            else if (thirdChoiceA == 3){
-                                System.out.println("--------------");
-                                System.out.println("Enter Attraction ID");
-                                int idInput = sc.nextInt();
-                                sc.nextLine();
-                                zoo.removeAttraction(idInput);
-                            }
-                            else if (thirdChoiceA == 4){
-                                System.out.println("You have successfully gone to back menu");
-                            }
-                            else {
-                                System.out.println("Wrong Command Try Again");
-                            }
-                        }
-                        //////////
-                        else if (secondChoiceA == 2) {
-                            System.out.println("2");
-                            System.out.println("--------------");
-                            System.out.println("Manage Animals");
-                            System.out.println("1. Add Animal");
-                            System.out.println("2. Update Animal");
-                            System.out.println("3. Remove Animal");
-                            System.out.println("4. Exit");
-
-                            int thirdChoiceA = sc.nextInt();
-                            sc.nextLine();
-
-                            if (thirdChoiceA == 1){
-                                System.out.println("--------------");
-                                System.out.println("Enter Animal Name");
-                                String nameAnimal = sc.nextLine();
-                                System.out.println("Enter Animal Description");
-                                String descriptionAnimal = sc.nextLine();
-                                System.out.println("Enter Animal Type");
-                                String typeAnimal = sc.nextLine();
-                                System.out.println("Enter Animal Sound");
-                                String feedAnimal = sc.nextLine();
-                                Animal animal = new Animal(nameAnimal, animalId, descriptionAnimal, feedAnimal, typeAnimal);
-                                zoo.addAnimal(animal);
-                                System.out.println("The Animal is Registered Successfully with ID : " + animalId);
-                                animalId++;
-
-                            }
-                            else if (thirdChoiceA == 2){
-                                System.out.println("--------------");
-                                System.out.println("1. Update Name");
-                                System.out.println("2. Update Description");
-                                System.out.println("3. Update Sound");
-                                System.out.println("4. Update Type");
-                                System.out.println("5. Exit");
-
-                                int fourthChoiceA = sc.nextInt();
-                                sc.nextLine();
-                                if (fourthChoiceA == 1) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Animal ID");
-                                    int idInput = sc.nextInt();
-                                    sc.nextLine();
-                                    System.out.println("Enter New Animal Name");
-                                    String nameNewAnimal = sc.nextLine();
-                                    zoo.updateAnimalName(idInput, nameNewAnimal);
-                                }
-                                else if (fourthChoiceA == 2) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Animal ID");
-                                    int idInput = sc.nextInt();
-                                    sc.nextLine();
-                                    System.out.println("Enter New Animal Description");
-                                    String descriptionNewAnimal = sc.nextLine();
-                                    zoo.updateAnimalDescription(idInput, descriptionNewAnimal);
-                                }
-                                else if (fourthChoiceA == 3) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Animal ID");
-                                    int idInput = sc.nextInt();
-                                    System.out.println("Enter New Attraction Sound");
-                                    String soundNewAnimal = sc.nextLine();
-                                    sc.nextLine();
-                                    zoo.updateAnimalSound(idInput, soundNewAnimal);
-                                }
-                                else if (fourthChoiceA == 4) {
-                                    System.out.println("--------------");
-                                    System.out.println("Enter Animal ID");
-                                    int idInput = sc.nextInt();
-                                    System.out.println("Enter New Animal Type");
-                                    String typeNewAnimal = sc.nextLine();
-                                    sc.nextLine();
-                                    zoo.updateAnimalType(idInput, typeNewAnimal);
-                                }
-                                else if (fourthChoiceA == 5) {
-                                    break;
-                                }
-                                else {
-                                    System.out.println("Try Again Wrong Command");
-                                }
-                            }
-                            else if (thirdChoiceA == 3){
-                                System.out.println("--------------");
-                                System.out.println("Enter Attraction ID");
-                                int idInput = sc.nextInt();
-                                sc.nextLine();
-                                zoo.removeAttraction(idInput);
-                            }
-                            else if (thirdChoiceA == 4){
-                                System.out.println("You have successfully gone to back menu");
-                            }
-                            else {
-                                System.out.println("Wrong Command Try Again");
-                            }
-
-                        }
-                        else if (secondChoiceA == 3) {
-                            System.out.println("3");
                         }
                         else if (secondChoiceA == 4) {
                             System.out.println("4");
@@ -410,9 +443,15 @@ public class ZooMgmt{
                                                         }
                                                     }
                                                     if (maxKey!=null){
+                                                        System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                         int fifthChoiceV = sc.nextInt();
-                                                        System.out.println(animals.get(fifthChoiceV).getName() + ":");
-                                                        System.out.println(animals.get(fifthChoiceV).getDescription());
+                                                        if (animals.containsKey(fifthChoiceV)){
+                                                            System.out.println(animals.get(fifthChoiceV).getName() + ":");
+                                                            System.out.println(animals.get(fifthChoiceV).getDescription());
+                                                        }
+                                                        else {
+                                                            System.out.println("You Entered Wrong Command, Hence Exited");
+                                                        }
                                                     }
                                                     else {
                                                         System.out.println("There are no Animals in the Zoo");
@@ -426,13 +465,24 @@ public class ZooMgmt{
                                                     for  (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()){
                                                         maxKey = entry.getValue();
                                                         if (maxKey!=null){
-                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                            if (maxKey.isOpen() == 1) {
+                                                                System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
+                                                            }
+                                                            else if (maxKey.isOpen() == 0) {
+                                                                System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
+                                                            }
                                                         }
                                                     }
                                                     if (maxKey!=null){
+                                                        System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                         int fifthChoiceV = sc.nextInt();
-                                                        System.out.println(attractions.get(fifthChoiceV).getName() + ":");
-                                                        System.out.println(attractions.get(fifthChoiceV).getDescription());
+                                                        if (attractions.containsKey(fifthChoiceV)) {
+                                                            System.out.println(attractions.get(fifthChoiceV).getName() + ":");
+                                                            System.out.println(attractions.get(fifthChoiceV).getDescription());
+                                                        }
+                                                        else {
+                                                            System.out.println("You Entered Wrong Command, Hence Exited");
+                                                        }
                                                     }
                                                     else {
                                                         System.out.println("There are no Attraction in the Zoo");
@@ -461,12 +511,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 20);
                                                             System.out.println("You have Successfully Purchased Basic Membership");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -476,12 +526,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 50);
                                                             System.out.println("You have Successfully Purchased Premium Membership");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -504,12 +554,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 30);
                                                             System.out.println("You have Successfully Upgraded to Premium Membership");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
-                                                            System.out.println("Your balance is: " + visitor.getBalance());
+                                                            System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -527,41 +577,43 @@ public class ZooMgmt{
                                             }
                                         }
                                         else if (thirdChoiceV == 3) {
-                                            System.out.println("Buy Tickets");
-                                            System.out.println("Enter the number of tickets");
-                                            int numberTicket = sc.nextInt();
-                                            sc.nextLine();
-                                            System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
-                                            Attraction maxKey = null;
-                                            Map<Integer, Attraction> attractionMap = zoo.getAttractions();
-                                            HashMap<Integer, Attraction> attractions = zoo.getAttractions();
-                                            for  (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()){
-                                                maxKey = entry.getValue();
-                                                if (maxKey!=null && maxKey.isOpen() == 1){
-                                                    System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - ( ₹" + (entry.getValue()).getPrice() + ")");
-                                                }
-                                            }
-                                            if (maxKey!=null && maxKey.isOpen() == 1){
-                                                int fourthChoiceV = sc.nextInt();
-                                                sc.nextLine();
-                                                if (visitor.getBalance() >= ((attractions.get(fourthChoiceV)).getPrice()) * numberTicket){
-                                                    for (int i = 0; i < numberTicket; i++){
-                                                        visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
-                                                    }
-                                                    int balanceV = visitor.getBalance();
-                                                    visitor.setBalance(balanceV - (((attractions.get(fourthChoiceV)).getPrice()) * numberTicket)) ;
-                                                    System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of " + (attractions.get(fourthChoiceV)).getName());
-                                                    System.out.println("Your balance is: " + visitor.getBalance());
-                                                }
-                                                else {
-                                                    System.out.println("Low balance Recharge First");
-                                                    System.out.println("Your balance is: " + visitor.getBalance());
-                                                }
+                                            if (visitor.getMembership() == 2){
+                                                System.out.println("You Don't need to buy Tickets for Attraction, As you are Premium Member");
                                             }
                                             else {
-                                                System.out.println("There are no Attraction in the Zoo or All Attractions are Closed Wait it to be Scheduled");
+                                                System.out.println("Buy Tickets");
+                                                System.out.println("Enter the number of tickets");
+                                                int numberTicket = sc.nextInt();
+                                                sc.nextLine();
+                                                System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
+                                                Attraction maxKey = null;
+                                                Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                                HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                                for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
+                                                    maxKey = entry.getValue();
+                                                    if (maxKey != null && maxKey.isOpen() == 1) {
+                                                        System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - ( ₹" + (entry.getValue()).getPrice() + ")");
+                                                    }
+                                                }
+                                                if (maxKey != null && maxKey.isOpen() == 1) {
+                                                    int fourthChoiceV = sc.nextInt();
+                                                    sc.nextLine();
+                                                    if (visitor.getBalance() >= ((attractions.get(fourthChoiceV)).getPrice()) * numberTicket) {
+                                                        for (int i = 0; i < numberTicket; i++) {
+                                                            visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
+                                                        }
+                                                        int balanceV = visitor.getBalance();
+                                                        visitor.setBalance(balanceV - (((attractions.get(fourthChoiceV)).getPrice()) * numberTicket));
+                                                        System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of ₹" + (attractions.get(fourthChoiceV)).getName());
+                                                        System.out.println("Your balance is: " + visitor.getBalance());
+                                                    } else {
+                                                        System.out.println("Low balance Recharge First");
+                                                        System.out.println("Your balance is: ₹" + visitor.getBalance());
+                                                    }
+                                                } else {
+                                                    System.out.println("There are no Attraction in the Zoo or All Attractions are Closed Wait it to be Scheduled");
+                                                }
                                             }
-
                                         }
                                         else if (thirdChoiceV == 4) {
                                             System.out.println("4");
