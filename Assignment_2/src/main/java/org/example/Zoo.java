@@ -3,9 +3,8 @@ package org.example;
 import java.util.HashMap;
 
 
-public class Zoo {
+public class Zoo{
     private final HashMap<Integer, Animal> animals;
-
     private final HashMap<Integer, Attraction> attractions;
     private final HashMap<Integer, Visitor> visitors;
     private final HashMap<Integer, String> feedbacks;
@@ -194,6 +193,4 @@ public class Zoo {
             System.out.println("Type of Animal has been updated to " + typeNewAnimal);
         }
     }
-
-
 }

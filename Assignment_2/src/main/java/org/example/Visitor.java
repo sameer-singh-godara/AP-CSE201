@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Visitor extends Admin{
     private String name;
     private int age;
@@ -11,6 +13,7 @@ public class Visitor extends Admin{
     private int membership; // 0 for no membership
     // 1 for basic membership
     // 2 for premium membership
+    private ArrayList<Attraction> attractionsPurchased;
 
 
     public Visitor(String name, int age, String phoneNumber, int balance, String email, String password, int id) {
@@ -22,7 +25,9 @@ public class Visitor extends Admin{
         this.email = email;
         this.id = id;
         this.membership = 0;
+        this.attractionsPurchased = new ArrayList<>();
     }
+
 
     public String getName() {
         return name;
@@ -79,4 +84,17 @@ public class Visitor extends Admin{
     public void setMembership(int membership) {
         this.membership = membership;
     }
+
+    public ArrayList<Attraction> getAttractionsPurchased() {
+        return attractionsPurchased;
+    }
+
+    public void setAttractionsPurchased(ArrayList<Attraction> attractionsPurchased) {
+        this.attractionsPurchased = attractionsPurchased;
+    }
+    public void addAttractionsPurchased(Attraction attraction){
+
+        attractionsPurchased.add(attraction);
+
+    };
 }

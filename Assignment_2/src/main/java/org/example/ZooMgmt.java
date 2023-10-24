@@ -362,10 +362,10 @@ public class ZooMgmt{
                         }
                         System.out.println("Enter Visitor Password");
                         String passwordVisitor = sc.next();
-                        HashMap<Integer, Visitor> visitors = zoo.getVisitors();
-                        Collection<Visitor> value = visitors.values();
-                        ArrayList<Visitor> visitorsList = new ArrayList<>(value);
-                        if (visitors.isEmpty()){
+                        HashMap<Integer, Visitor> visitorHashMap = zoo.getVisitors();
+                        Collection<Visitor> value1 = visitorHashMap.values();
+                        ArrayList<Visitor> visitorsList = new ArrayList<>(value1);
+                        if (visitorHashMap.isEmpty()){
                             System.out.println("Member Doesn't Exist Try Again First Enter Some Members");
                         }
                         else {
@@ -392,6 +392,59 @@ public class ZooMgmt{
 
                                         if (thirdChoiceV == 1){
                                             System.out.println("Explore Zoo");
+                                            while (true){
+                                                System.out.println("1. View Animals");
+                                                System.out.println("2. View Attraction");
+                                                System.out.println("3. Exit");
+                                                int fourthChoiceV = sc.nextInt();
+                                                sc.nextLine();
+                                                if (fourthChoiceV == 1){
+                                                    System.out.println("Animals in the Zoo are as follows:");
+                                                    Animal maxKey = null;
+                                                    Map<Integer, Animal> animalMap = zoo.getAnimals();
+                                                    HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                                    for  (Map.Entry<Integer, Animal> entry : animalMap.entrySet()){
+                                                        maxKey = entry.getValue();
+                                                        if (maxKey!=null){
+                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                        }
+                                                    }
+                                                    if (maxKey!=null){
+                                                        int fifthChoiceV = sc.nextInt();
+                                                        System.out.println(animals.get(fifthChoiceV).getName() + ":");
+                                                        System.out.println(animals.get(fifthChoiceV).getDescription());
+                                                    }
+                                                    else {
+                                                        System.out.println("There are no Animals in the Zoo");
+                                                    }
+                                                }
+                                                else if (fourthChoiceV == 2){
+                                                    System.out.println("Attraction in the Zoo are as follows:");
+                                                    Attraction maxKey = null;
+                                                    Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                                    HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                                    for  (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()){
+                                                        maxKey = entry.getValue();
+                                                        if (maxKey!=null){
+                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                        }
+                                                    }
+                                                    if (maxKey!=null){
+                                                        int fifthChoiceV = sc.nextInt();
+                                                        System.out.println(attractions.get(fifthChoiceV).getName() + ":");
+                                                        System.out.println(attractions.get(fifthChoiceV).getDescription());
+                                                    }
+                                                    else {
+                                                        System.out.println("There are no Attraction in the Zoo");
+                                                    }
+                                                }
+                                                else if (fourthChoiceV == 3){
+                                                    break;
+                                                }
+                                                else {
+                                                    System.out.println("Wrong Command Try Again");
+                                                }
+                                            }
                                         }
                                         else if (thirdChoiceV == 2) {
                                             while (true) {
@@ -408,10 +461,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 20);
                                                             System.out.println("You have Successfully Purchased Basic Membership");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -421,10 +476,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 50);
                                                             System.out.println("You have Successfully Purchased Premium Membership");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -447,10 +504,12 @@ public class ZooMgmt{
                                                             int balanceV = visitor.getBalance();
                                                             visitor.setBalance(balanceV - 30);
                                                             System.out.println("You have Successfully Upgraded to Premium Membership");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                         else {
                                                             System.out.println("Low Balance Recharge Your Balance");
+                                                            System.out.println("Your balance is: " + visitor.getBalance());
                                                             break;
                                                         }
                                                     }
@@ -468,7 +527,41 @@ public class ZooMgmt{
                                             }
                                         }
                                         else if (thirdChoiceV == 3) {
-                                            System.out.println("3");
+                                            System.out.println("Buy Tickets");
+                                            System.out.println("Enter the number of tickets");
+                                            int numberTicket = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
+                                            Attraction maxKey = null;
+                                            Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                            HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                            for  (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()){
+                                                maxKey = entry.getValue();
+                                                if (maxKey!=null && maxKey.isOpen() == 1){
+                                                    System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - ( ₹" + (entry.getValue()).getPrice() + ")");
+                                                }
+                                            }
+                                            if (maxKey!=null && maxKey.isOpen() == 1){
+                                                int fourthChoiceV = sc.nextInt();
+                                                sc.nextLine();
+                                                if (visitor.getBalance() >= ((attractions.get(fourthChoiceV)).getPrice()) * numberTicket){
+                                                    for (int i = 0; i < numberTicket; i++){
+                                                        visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
+                                                    }
+                                                    int balanceV = visitor.getBalance();
+                                                    visitor.setBalance(balanceV - (((attractions.get(fourthChoiceV)).getPrice()) * numberTicket)) ;
+                                                    System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of " + (attractions.get(fourthChoiceV)).getName());
+                                                    System.out.println("Your balance is: " + visitor.getBalance());
+                                                }
+                                                else {
+                                                    System.out.println("Low balance Recharge First");
+                                                    System.out.println("Your balance is: " + visitor.getBalance());
+                                                }
+                                            }
+                                            else {
+                                                System.out.println("There are no Attraction in the Zoo or All Attractions are Closed Wait it to be Scheduled");
+                                            }
+
                                         }
                                         else if (thirdChoiceV == 4) {
                                             System.out.println("4");
@@ -491,6 +584,7 @@ public class ZooMgmt{
                                         }
                                         else if (thirdChoiceV == 9) {
                                             System.out.println("Recharge Your Balance:");
+                                            System.out.println("Your Current Balance is : " + visitor.getBalance());
                                             System.out.println("Enter the Amount");
                                             int recharge = sc.nextInt();
                                             sc.nextLine();
