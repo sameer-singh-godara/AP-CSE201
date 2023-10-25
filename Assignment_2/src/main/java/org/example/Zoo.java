@@ -72,17 +72,17 @@ public class Zoo{
         attractions.put(attraction.getId(), attraction);
     }
 
-    public void addAnimal(Animal animal) {
-        animals.put(animal.getId(), animal);
-    }
     public void addMammal(Mammal mammal) {
         mammals.put(mammal.getId(), mammal);
+        animals.put(mammal.getId(), mammal);
     }
     public void addReptile(Reptile reptile) {
         reptiles.put(reptile.getId(),reptile);
+        animals.put(reptile.getId(), reptile);
     }
     public void addAmphibian(Amphibian amphibian) {
         amphibians.put(amphibian.getId(), amphibian);
+        animals.put(amphibian.getId(), amphibian);
     }
 
     public void addDiscount(Discount discount) {
@@ -274,12 +274,37 @@ public class Zoo{
 
     public void removeAnimal(int idInput) {
         if (animals.containsKey(idInput)){
-            int flag = 0;
             if (mammals.containsKey(idInput)){
-                flag = 1;
+                if (mammals.size()>2){
+                    animals.remove(idInput);
+                    mammals.remove(idInput);
+                    System.out.println("Animal with ID " + idInput + " Removed Successfully");
+                }
+                else {
+                    System.out.println("Animal with ID " + idInput + " Not Removed because number of Mammals should be strictly greater or equal to 2");
+                }
             }
-            animals.remove(idInput);
-            System.out.println("Animal with ID " + idInput + " has been removed");
+            else if (reptiles.containsKey(idInput)){
+                if (reptiles.size()>2){
+                    animals.remove(idInput);
+                    reptiles.remove(idInput);
+                    System.out.println("Animal with ID " + idInput + " Removed Successfully");
+                }
+                else {
+                    System.out.println("Animal with ID " + idInput + " Not Removed because Number of Reptiles should be strictly greater or equal to 2");
+                }
+            }
+            else if (amphibians.containsKey(idInput)){
+                if (amphibians.size()>2){
+                    animals.remove(idInput);
+                    amphibians.remove(idInput);
+                    System.out.println("Animal with ID " + idInput + " Removed Successfully");
+                }
+                else {
+                    System.out.println("Animal with ID " + idInput + " Not Removed because number of Amphibians should be strictly greater or equal to 2");
+                }
+            }
+
         }
         else {
             System.out.println("Animal can't be removed as ID " + idInput + " Doesn't Exist");

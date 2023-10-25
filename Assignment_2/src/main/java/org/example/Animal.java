@@ -1,6 +1,6 @@
 package org.example;
 
-public class Animal implements Events{
+public abstract class Animal implements Events{
     private String name;
     private int id;
     private String description;
@@ -65,4 +65,6 @@ public class Animal implements Events{
     public void setFeed(String feed) {
         this.feed = feed;
     }
+
+    public abstract String getType();
 }

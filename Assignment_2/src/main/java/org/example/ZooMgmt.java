@@ -11,6 +11,8 @@ public class ZooMgmt{
         int dealId = 0;
         int feedbackId = 0;
         int revenue = 0;
+        int totalVisitorsVisited = 0;
+        int totalVisitorsVisitedAnimalsIncluded = 0;
 
         Zoo zoo = new Zoo();
         System.out.println("--------------");
@@ -23,7 +25,7 @@ public class ZooMgmt{
             System.out.println("--------------");
             System.out.println("1. Enter As Admin");
             System.out.println("2. Enter As Visitor");
-            System.out.println("3. View Special Deals");
+            System.out.println("3. Exit");
             Scanner sc = new Scanner(System.in);
             int firstChoice = sc.nextInt();
             sc.nextLine();
@@ -170,17 +172,14 @@ public class ZooMgmt{
                                     while (true){
                                         if (animalType == 1) {
                                             Mammal animal = new Mammal(nameAnimal, animalId, descriptionAnimal, feedAnimal);
-                                            zoo.addAnimal(animal);
                                             zoo.addMammal(animal);
                                             break;
                                         } else if (animalType == 2) {
                                             Reptile animal = new Reptile(nameAnimal, animalId, descriptionAnimal, feedAnimal);
-                                            zoo.addAnimal(animal);
                                             zoo.addReptile(animal);
                                             break;
                                         } else if (animalType == 3) {
                                             Amphibian animal = new Amphibian(nameAnimal, animalId, descriptionAnimal, feedAnimal);
-                                            zoo.addAnimal(animal);
                                             zoo.addAmphibian(animal);
                                             break;
                                         }
@@ -401,8 +400,9 @@ public class ZooMgmt{
                         }
                         else if (secondChoiceA == 6) {
                             System.out.println("Visitor Statistics");
-                            System.out.println("1. Total number of Visitors : " + visitorId);
-                            System.out.println("2. Total Revenue of Zoo : " + revenue);
+                            System.out.println("1. Total number of Visitors Visited Attraction : " + totalVisitorsVisited);
+                            System.out.println("2. Total number of Visitors Visited Attraction including Animals: " + totalVisitorsVisitedAnimalsIncluded);
+                            System.out.println("3. Total Revenue of Zoo : ₹" + revenue);
                             /* finding attraction with maximum visitors */
                             int max = 0;
                             Attraction maxKey = null;
@@ -416,10 +416,10 @@ public class ZooMgmt{
                                 }
                             }
                             if (maxKey!=null){
-                                System.out.println("3. Most Popular Attraction : " + maxKey.getName());
+                                System.out.println("4. Most Popular Attraction : " + maxKey.getName());
                             }
                             else {
-                                System.out.println("3. There Are No Attraction Hence No Popular Attraction");
+                                System.out.println("4. There Are No Attraction Hence No Popular Attraction");
                             }
                         }
                         else if (secondChoiceA == 7) {
@@ -630,6 +630,7 @@ public class ZooMgmt{
                                                             visitor.setBalance(balanceV - 20);
                                                             System.out.println("You have Successfully Purchased Basic Membership");
                                                             System.out.println("Your balance is: ₹" + visitor.getBalance());
+                                                            revenue += 20;
                                                             break;
                                                         }
                                                         else {
@@ -645,6 +646,7 @@ public class ZooMgmt{
                                                             visitor.setBalance(balanceV - 50);
                                                             System.out.println("You have Successfully Purchased Premium Membership");
                                                             System.out.println("Your balance is: ₹" + visitor.getBalance());
+                                                            revenue += 50;
                                                             break;
                                                         }
                                                         else {
@@ -673,6 +675,7 @@ public class ZooMgmt{
                                                             visitor.setBalance(balanceV - 30);
                                                             System.out.println("You have Successfully Upgraded to Premium Membership");
                                                             System.out.println("Your balance is: ₹" + visitor.getBalance());
+                                                            revenue += 30;
                                                             break;
                                                         }
                                                         else {
@@ -698,7 +701,7 @@ public class ZooMgmt{
                                             if (visitor.getMembership() == 2){
                                                 System.out.println("You Don't need to buy Tickets for Attraction, As you are Premium Member");
                                             }
-                                            else {
+                                            else if (visitor.getMembership() == 1){
                                                 System.out.println("Buy Tickets");
                                                 System.out.println("Enter the number of tickets");
                                                 int numberTicket = sc.nextInt();
@@ -720,6 +723,7 @@ public class ZooMgmt{
                                                         for (int i = 0; i < numberTicket; i++) {
                                                             visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
                                                         }
+                                                        revenue += (numberTicket * ((attractions.get(fourthChoiceV)).getPrice()));
                                                         int balanceV = visitor.getBalance();
                                                         visitor.setBalance(balanceV - (((attractions.get(fourthChoiceV)).getPrice()) * numberTicket));
                                                         System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of ₹" + (attractions.get(fourthChoiceV)).getName());
@@ -732,6 +736,9 @@ public class ZooMgmt{
                                                     System.out.println("There are no Attraction in the Zoo or All Attractions are Closed Wait it to be Scheduled");
                                                 }
                                             }
+                                            else {
+                                                System.out.println("Go and First Buy Membership, Then come here to Visit Attraction");
+                                            }
                                         }
                                         else if (thirdChoiceV == 4) {
                                             System.out.println("4");
@@ -741,45 +748,51 @@ public class ZooMgmt{
                                         }
                                         else if (thirdChoiceV == 6) {
                                             while (true){
-                                                System.out.println("Animals in the Zoo are as follows");
-                                                Animal maxKey = null;
-                                                Map<Integer, Animal> animalMap = zoo.getAnimals();
-                                                HashMap<Integer, Animal> animals = zoo.getAnimals();
-                                                for  (Map.Entry<Integer, Animal> entry : animalMap.entrySet()){
-                                                    maxKey = entry.getValue();
-                                                    if (maxKey!=null){
-                                                        System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                if (visitor.getMembership()!=0){
+                                                    System.out.println("Animals in the Zoo are as follows");
+                                                    Animal maxKey = null;
+                                                    Map<Integer, Animal> animalMap = zoo.getAnimals();
+                                                    HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                                    for  (Map.Entry<Integer, Animal> entry : animalMap.entrySet()){
+                                                        maxKey = entry.getValue();
+                                                        if (maxKey!=null){
+                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                        }
                                                     }
-                                                }
-                                                if (maxKey!=null){
-                                                    System.out.println("Which Animal Do You Want to Visit (To Exit this section, Enter Number other than the ID's mentioned)");
-                                                    int fourthChoiceV = sc.nextInt();
-                                                    if (animals.containsKey(fourthChoiceV)){
-                                                        while (true) {
-                                                            System.out.println("What you want to do with " + animals.get(fourthChoiceV).getName());
-                                                            System.out.println("1. Feed " + animals.get(fourthChoiceV).getName());
-                                                            System.out.println("2. Read about " + animals.get(fourthChoiceV).getName());
-                                                            System.out.println("3. Exit");
-                                                            int fifthChoiceV = sc.nextInt();
-                                                            if (fifthChoiceV == 1) {
-                                                                System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getFeed());
-                                                            } else if (fifthChoiceV == 2) {
-                                                                System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getDescription());
-                                                            } else if (fifthChoiceV == 3) {
-                                                                System.out.println("Going Back Successfully");
-                                                                break;
-                                                            } else {
-                                                                System.out.println("You Entered Wrong Command, Hence Exited");
+                                                    if (maxKey!=null){
+                                                        System.out.println("Which Animal Do You Want to Visit (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                        int fourthChoiceV = sc.nextInt();
+                                                        if (animals.containsKey(fourthChoiceV)){
+                                                            while (true) {
+                                                                System.out.println("What you want to do with " + animals.get(fourthChoiceV).getName());
+                                                                System.out.println("1. Feed " + animals.get(fourthChoiceV).getName());
+                                                                System.out.println("2. Read about " + animals.get(fourthChoiceV).getName());
+                                                                System.out.println("3. Exit");
+                                                                int fifthChoiceV = sc.nextInt();
+                                                                if (fifthChoiceV == 1) {
+                                                                    System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getFeed());
+                                                                } else if (fifthChoiceV == 2) {
+                                                                    System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getDescription());
+                                                                } else if (fifthChoiceV == 3) {
+                                                                    System.out.println("Going Back Successfully");
+                                                                    totalVisitorsVisitedAnimalsIncluded++;
+                                                                    break;
+                                                                } else {
+                                                                    System.out.println("You Entered Wrong Command, Hence Exited");
+                                                                }
                                                             }
+                                                        }
+                                                        else {
+                                                            System.out.println("You Entered Wrong Command, Hence Exited");
+                                                            break;
                                                         }
                                                     }
                                                     else {
-                                                        System.out.println("You Entered Wrong Command, Hence Exited");
-                                                        break;
+                                                        System.out.println("There are no Animals in the Zoo");
                                                     }
                                                 }
-                                                else {
-                                                    System.out.println("There are no Animals in the Zoo");
+                                                else{
+                                                    System.out.println("Go and First Buy Membership, Then come here To Visit Animals");
                                                 }
                                             }
                                         }
@@ -802,22 +815,42 @@ public class ZooMgmt{
                                                 if (maxKey != null) {
                                                     System.out.println("Enter The Attraction ID You Want To Visit (To Exit this section, Enter Number other than the ID's mentioned)");
                                                     int fourthChoiceV = sc.nextInt();
+                                                    sc.nextLine();
                                                     if (attractions.containsKey(fourthChoiceV)) {
-                                                        if ((visitor.getAttractionsPurchased()).contains(attractions.get(fourthChoiceV)) || visitor.getMembership() == 2) {
-                                                            if (visitor.getMembership() == 2) {
-                                                                System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Thank you for being Premium Member");
+                                                        if (attractions.get(fourthChoiceV).isOpen() == 1){
+                                                            if ((visitor.getAttractionsPurchased()).contains(attractions.get(fourthChoiceV)) || visitor.getMembership() == 2) {
+                                                                if (visitor.getMembership() == 2) {
+                                                                    System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Thank you for being Premium Member");
+                                                                } else {
+                                                                    System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
+                                                                    (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
+                                                                    // System.out.println(visitor.getAttractionsPurchased());
+                                                                }
+                                                                totalVisitorsVisited++;
+                                                                totalVisitorsVisitedAnimalsIncluded++;
+                                                                int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
+                                                                numberOfVisitorsForAttraction++;
+                                                                attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
                                                             } else {
-                                                                System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
-                                                                (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
-                                                                 // System.out.println(visitor.getAttractionsPurchased());
+                                                                System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
+                                                                break;
                                                             }
-                                                            int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
-                                                            numberOfVisitorsForAttraction++;
-                                                            attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
                                                         }
                                                         else {
-                                                            System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
-                                                            break;
+                                                            System.out.println("Attraction is Closed, Please Come After It Gets Open");
+                                                            System.out.println("Write 1 for Choosing Another Attraction");
+                                                            System.out.println("Write 2 for Exiting");
+                                                            int fifthChoiceV = sc.nextInt();
+                                                            sc.nextLine();
+                                                            if (fifthChoiceV == 1){
+                                                                System.out.println("Try to Choose the Attraction which is open");
+                                                            }
+                                                            else if (fifthChoiceV == 2){
+                                                                break;
+                                                            }
+                                                            else {
+                                                                System.out.println("Wrong Command Try Again");
+                                                            }
                                                         }
                                                     } else {
                                                         System.out.println("You Entered Wrong Command, Hence Exited");
@@ -861,7 +894,6 @@ public class ZooMgmt{
                         }
                     }
                     else if (secondChoiceV == 3) {
-//                        System.out.println("back");
                         break;
                     }
                     else {
@@ -871,12 +903,11 @@ public class ZooMgmt{
 
             }
             else if (firstChoice == 3){
-                System.out.println("The Special Deals are as follows:");
-
-            }
-            else {
                 System.out.println("Thanks for Visiting");
                 break;
+            }
+            else {
+                System.out.println("Wrong Command Try Again");
             }
 
         }
