@@ -4,13 +4,13 @@ public class Deal extends Offer {
     private int ticketNumber;
     private int percentage;
     private int id;
-    private int valid;
+    private int isOpen;
 
     public Deal(int ticketNumber, int percentage, int id, int valid) {
         this.ticketNumber = ticketNumber;
         this.percentage = percentage;
         this.id = id;
-        this.valid = valid;
+        this.isOpen = valid;
     }
 
     public int getTicketNumber() {
@@ -42,12 +42,12 @@ public class Deal extends Offer {
     }
 
     @Override
-    public int getValid() {
-        return valid;
+    public int getIsOpen() {
+        return isOpen;
     }
 
     @Override
-    public void setValid(int valid) {
-        this.valid = valid;
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
     }
 }

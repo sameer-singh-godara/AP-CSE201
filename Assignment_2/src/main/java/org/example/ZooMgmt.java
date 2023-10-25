@@ -1,7 +1,5 @@
 package org.example;
 
-import org.w3c.dom.Attr;
-
 import java.util.*;
 
 public class ZooMgmt{
@@ -149,7 +147,8 @@ public class ZooMgmt{
                                 System.out.println("1. Add Animal");
                                 System.out.println("2. Update Animal");
                                 System.out.println("3. Remove Animal");
-                                System.out.println("4. Exit");
+                                System.out.println("4. View All Animals");
+                                System.out.println("5. Exit");
 
                                 int thirdChoiceA = sc.nextInt();
                                 sc.nextLine();
@@ -160,12 +159,35 @@ public class ZooMgmt{
                                     String nameAnimal = sc.nextLine();
                                     System.out.println("Enter Animal Description");
                                     String descriptionAnimal = sc.nextLine();
-                                    System.out.println("Enter Animal Type");
-                                    String typeAnimal = sc.nextLine();
                                     System.out.println("Enter Animal Sound");
                                     String feedAnimal = sc.nextLine();
-                                    Animal animal = new Animal(nameAnimal, animalId, descriptionAnimal, feedAnimal, typeAnimal);
-                                    zoo.addAnimal(animal);
+                                    System.out.println("Enter Animal Type");
+                                    System.out.println("1. Mammal");
+                                    System.out.println("2. Reptile");
+                                    System.out.println("3. Amphibian");
+                                    int animalType = sc.nextInt();
+                                    sc.nextLine();
+                                    while (true){
+                                        if (animalType == 1) {
+                                            Mammal animal = new Mammal(nameAnimal, animalId, descriptionAnimal, feedAnimal);
+                                            zoo.addAnimal(animal);
+                                            zoo.addMammal(animal);
+                                            break;
+                                        } else if (animalType == 2) {
+                                            Reptile animal = new Reptile(nameAnimal, animalId, descriptionAnimal, feedAnimal);
+                                            zoo.addAnimal(animal);
+                                            zoo.addReptile(animal);
+                                            break;
+                                        } else if (animalType == 3) {
+                                            Amphibian animal = new Amphibian(nameAnimal, animalId, descriptionAnimal, feedAnimal);
+                                            zoo.addAnimal(animal);
+                                            zoo.addAmphibian(animal);
+                                            break;
+                                        }
+                                        else{
+                                            System.out.println("Wrong Command Try Again");
+                                        }
+                                    }
                                     System.out.println("The Animal is Registered Successfully with ID : " + animalId);
                                     animalId++;
 
@@ -176,8 +198,7 @@ public class ZooMgmt{
                                         System.out.println("1. Update Name");
                                         System.out.println("2. Update Description");
                                         System.out.println("3. Update Sound");
-                                        System.out.println("4. Update Type");
-                                        System.out.println("5. Exit");
+                                        System.out.println("4. Exit");
 
                                         int fourthChoiceA = sc.nextInt();
                                         sc.nextLine();
@@ -209,15 +230,6 @@ public class ZooMgmt{
                                             zoo.updateAnimalSound(idInput, soundNewAnimal);
                                         }
                                         else if (fourthChoiceA == 4) {
-                                            System.out.println("--------------");
-                                            System.out.println("Enter Animal ID");
-                                            int idInput = sc.nextInt();
-                                            System.out.println("Enter New Animal Type");
-                                            String typeNewAnimal = sc.nextLine();
-                                            sc.nextLine();
-                                            zoo.updateAnimalType(idInput, typeNewAnimal);
-                                        }
-                                        else if (fourthChoiceA == 5) {
                                             break;
                                         }
                                         else {
@@ -230,7 +242,7 @@ public class ZooMgmt{
                                     System.out.println("Enter Animal ID");
                                     int idInput = sc.nextInt();
                                     sc.nextLine();
-                                    zoo.removeAttraction(idInput);
+                                    zoo.removeAnimal(idInput);
                                 }
                                 else if (thirdChoiceA == 4) {
                                     System.out.println("You have successfully gone to back menu");
@@ -318,13 +330,70 @@ public class ZooMgmt{
                                     System.out.println("Enter Percentage");
                                     int percentageDiscount = sc.nextInt();
                                     sc.nextLine();
-
-
-
-
-
+                                    Discount discount = new Discount(discountCode, lowerDiscountAge, upperDiscountAge, percentageDiscount, discountId, 1);
+                                    zoo.addDiscount(discount);
+                                    System.out.println("The Discount is Added Successfully with Code : " + discount.getCode());
+                                    discountId++;
                                 }
-
+                                else if (thirdChoiceV == 2){
+                                    while (true) {
+                                        System.out.println("Update Discount");
+                                        System.out.println("1. Update Lower Limit");
+                                        System.out.println("2. Update Upper Limit");
+                                        System.out.println("3. Update Percentage");
+                                        System.out.println("4. Update Validity");
+                                        int fourthChoiceV = sc.nextInt();
+                                        sc.nextLine();
+                                        if (fourthChoiceV == 1){
+                                            System.out.println("Enter The Coupon Code");
+                                            String couponCode = sc.nextLine();
+                                            System.out.println("Enter the New Lower Limit");
+                                            int lowerNewAge = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updateLowerLimitDiscount(couponCode, lowerNewAge);
+                                        } else if (fourthChoiceV == 2) {
+                                            System.out.println("Enter The Coupon Code");
+                                            String couponCode = sc.nextLine();
+                                            System.out.println("Enter the New Upper Limit");
+                                            int upperNewAge = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updateUpperLimitDiscount(couponCode, upperNewAge);
+                                        } else if (fourthChoiceV == 3) {
+                                            System.out.println("Enter The Coupon Code");
+                                            String couponCode = sc.nextLine();
+                                            System.out.println("Enter the New Percentage");
+                                            int newPercentage = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updatePercentageDiscount(couponCode, newPercentage);
+                                        }
+                                        else if (fourthChoiceV == 4) {
+                                            System.out.println("Enter The Coupon Code");
+                                            String couponCode = sc.nextLine();
+                                            System.out.println("Enter the New Validity (0: for In-Valid & 1: for Valid)");
+                                            int isOpen = sc.nextInt();
+                                            sc.nextLine();
+                                            zoo.updateValidityDiscount(couponCode, isOpen);
+                                        }
+                                        else if (fourthChoiceV == 5){
+                                            break;
+                                        }
+                                        else {
+                                            System.out.println("Wrong Command Try Again");
+                                        }
+                                    }
+                                }
+                                else if (thirdChoiceV == 3) {
+                                    System.out.println("Remove Discount from Data-Base");
+                                    System.out.println("Enter The Coupon Code");
+                                    String couponCode = sc.nextLine();
+                                    zoo.removeDiscount(couponCode);
+                                }
+                                else if (thirdChoiceV == 4) {
+                                    break;
+                                }
+                                else {
+                                    System.out.println("Wrong Command Try Again");
+                                }
                             }
                         }
                         else if (secondChoiceA == 5) {

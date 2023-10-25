@@ -5,14 +5,12 @@ public class Animal implements Events{
     private int id;
     private String description;
     private String feed;
-    private String type;
 
-    public Animal(String name, int id, String description, String feed, String type) {
+    public Animal(String name, int id, String description, String feed) {
         this.name = name;
         this.id = id;
         this.description = description;
         this.feed = feed;
-        this.type = type;
     }
 
     @Override
@@ -67,14 +65,4 @@ public class Animal implements Events{
     public void setFeed(String feed) {
         this.feed = feed;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
 }

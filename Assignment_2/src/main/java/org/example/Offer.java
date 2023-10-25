@@ -10,7 +10,7 @@ public abstract class Offer {
 
     public abstract void setId(int id);
 
-    public abstract int getValid();
+    public abstract int getIsOpen();
 
-    public abstract void setValid(int valid);
+    public abstract void setIsOpen(int isOpen);
 }

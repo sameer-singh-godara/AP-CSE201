@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 public class Zoo{
     private final HashMap<Integer, Animal> animals;
+    private final HashMap<Integer, Mammal> mammals ;
+    private final HashMap<Integer, Reptile> reptiles;
+    private final HashMap<Integer, Amphibian> amphibians ;
     private final HashMap<Integer, Attraction> attractions;
     private final HashMap<Integer, Visitor> visitors;
     private final HashMap<Integer, String> feedbacks;
@@ -13,6 +16,9 @@ public class Zoo{
 
     public Zoo() {
         animals = new HashMap<>();
+        mammals = new HashMap<>();
+        reptiles = new HashMap<>();
+        amphibians = new HashMap<>();
         visitors = new HashMap<>();
         feedbacks = new HashMap<>();
         attractions = new HashMap<>();
@@ -23,6 +29,15 @@ public class Zoo{
 
     public HashMap<Integer, Animal> getAnimals() {
         return animals;
+    }
+    public HashMap<Integer, Mammal> getMammals() {
+        return mammals;
+    }
+    public HashMap<Integer, Reptile> getReptiles() {
+        return reptiles;
+    }
+    public HashMap<Integer, Amphibian> getAmphibians() {
+        return amphibians;
     }
 
     public HashMap<Integer, Attraction> getAttractions() {
@@ -60,6 +75,19 @@ public class Zoo{
     public void addAnimal(Animal animal) {
         animals.put(animal.getId(), animal);
     }
+    public void addMammal(Mammal mammal) {
+        mammals.put(mammal.getId(), mammal);
+    }
+    public void addReptile(Reptile reptile) {
+        reptiles.put(reptile.getId(),reptile);
+    }
+    public void addAmphibian(Amphibian amphibian) {
+        amphibians.put(amphibian.getId(), amphibian);
+    }
+
+    public void addDiscount(Discount discount) {
+        discounts.put(discount.getCode(), discount);
+    }
 
 
     public boolean isValidPhoneNumber(String phoneNumber) {
@@ -89,7 +117,7 @@ public class Zoo{
     public void updateAttractionName(int idInput, String nameNewAtt) {
 
         if (!attractions.containsKey(idInput)){
-            System.out.println("Error in Updating Name as ID Doesn't Exist");
+            System.out.println("Error in Updating Name of Animal as ID " + idInput + " Doesn't Exist");
             return;
         }
         Attraction attraction = attractions.get(idInput);
@@ -101,7 +129,7 @@ public class Zoo{
     }
         public void updateAttractionDescription(int idInput, String descriptionNewAtt) {
             if (!attractions.containsKey(idInput)){
-                System.out.println("Error in Updating Name as ID Doesn't Exist");
+                System.out.println("Error in Updating Description of Attraction as ID " + idInput + " Doesn't Exist");
                 return;
             }
             Attraction attraction = attractions.get(idInput);
@@ -113,7 +141,7 @@ public class Zoo{
         }
         public void updateAttractionPrice(int idInput, int priceNewAtt) {
             if (!attractions.containsKey(idInput)){
-                System.out.println("Error in Updating Name as ID Doesn't Exist");
+                System.out.println("Error in Updating Price of Attraction as ID " + idInput + " Doesn't Exist");
                 return;
             }
             Attraction attraction = attractions.get(idInput);
@@ -125,7 +153,7 @@ public class Zoo{
         }
         public void updateAttractionOpen(int idInput, int openNewAtt) {
             if (!attractions.containsKey(idInput)){
-                System.out.println("Error in Updating Name as ID " + idInput + " Doesn't Exist");
+                System.out.println("Error in Updating Availability of Attraction as ID " + idInput + " Doesn't Exist");
                 return;
             }
             Attraction attraction = attractions.get(idInput);
@@ -156,7 +184,7 @@ public class Zoo{
     public void updateAnimalName(int idInput, String nameNewAnimal) {
 
         if (!animals.containsKey(idInput)) {
-            System.out.println("Error in Updating Name as ID Doesn't Exist");
+            System.out.println("Error in Updating Name of Animal as ID "+ idInput +" Doesn't Exist");
             return;
         }
         Animal animal = animals.get(idInput);
@@ -169,7 +197,7 @@ public class Zoo{
     public void updateAnimalDescription(int idInput, String descriptionNewAnimal) {
 
         if (!animals.containsKey(idInput)) {
-            System.out.println("Error in Updating Name as ID Doesn't Exist");
+            System.out.println("Error in Updating Description of Animal as ID "+ idInput +" Doesn't Exist");
             return;
         }
         Animal animal = animals.get(idInput);
@@ -182,7 +210,7 @@ public class Zoo{
     public void updateAnimalSound(int idInput, String feedNewAnimal) {
 
         if (!animals.containsKey(idInput)) {
-            System.out.println("Error in Updating Name as ID Doesn't Exist");
+            System.out.println("Error in Updating Sound of Animal as ID "+ idInput +" Doesn't Exist");
             return;
         }
         Animal animal = animals.get(idInput);
@@ -192,17 +220,78 @@ public class Zoo{
             System.out.println("Sound of Animal has been updated to " + feedNewAnimal);
         }
     }
-    public void updateAnimalType(int idInput, String typeNewAnimal) {
 
-        if (!animals.containsKey(idInput)) {
-            System.out.println("Error in Updating Name as ID Doesn't Exist");
+
+    public void updateLowerLimitDiscount(String couponCode, int lowerNewAge) {
+        if (!discounts.containsKey(couponCode)) {
+            System.out.println("Error in Updating Lower Age Limit as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
             return;
         }
-        Animal animal = animals.get(idInput);
+        Discount discount = discounts.get(couponCode);
+        if (discount.getCode() == couponCode) {
+            discount.setLowerAge(lowerNewAge);
+            System.out.println("The Lower Age Limit of Coupon \"" + couponCode + "\" is set to " + lowerNewAge);
+        }
+    }
+    public void updateUpperLimitDiscount(String couponCode, int upperNewAge) {
+        if (!discounts.containsKey(couponCode)) {
+            System.out.println("Error in Updating Upper Age Limit as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
+            return;
+        }
+        Discount discount = discounts.get(couponCode);
+        if (discount.getCode() == couponCode) {
+            discount.setUpperAge(upperNewAge);
+            System.out.println("The Upper Age Limit of Coupon-Code \"" + couponCode + "\" is set to " + upperNewAge);
+        }
+    }
+    public void updatePercentageDiscount(String couponCode, int percentage) {
+        if (!discounts.containsKey(couponCode)) {
+            System.out.println("Error in Updating Percentage Discount as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
+            return;
+        }
+        Discount discount = discounts.get(couponCode);
+        if (discount.getCode() == couponCode) {
+            discount.setPercentage(percentage);
+            System.out.println("The Percentage Discount of Coupon-Code \"" + couponCode + "\" is set to " + percentage);
+        }
+    }
+    public void updateValidityDiscount(String couponCode, int isOpen) {
+        if (!discounts.containsKey(couponCode)) {
+            System.out.println("Error in Updating Validity as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
+            return;
+        }
+        Discount discount = discounts.get(couponCode);
+        if (discount.getCode() == couponCode) {
+            discount.setIsOpen(isOpen);
+            if (isOpen == 1){
+                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to Valid :" + isOpen);
+            }
+            else {
+                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to In-Valid :" + isOpen);
+            }
+        }
+    }
 
-        if (animal.getId() == idInput) {
-            animal.setType(typeNewAnimal);
-            System.out.println("Type of Animal has been updated to " + typeNewAnimal);
+    public void removeAnimal(int idInput) {
+        if (animals.containsKey(idInput)){
+            int flag = 0;
+            if (mammals.containsKey(idInput)){
+                flag = 1;
+            }
+            animals.remove(idInput);
+            System.out.println("Animal with ID " + idInput + " has been removed");
+        }
+        else {
+            System.out.println("Animal can't be removed as ID " + idInput + " Doesn't Exist");
+        }
+    }
+    public void removeDiscount(String couponCode) {
+        if (discounts.containsKey(couponCode)){
+            discounts.remove(couponCode);
+            System.out.println("Discount with Coupon-Code \"" + couponCode + "\" has been removed");
+        }
+        else {
+            System.out.println("Discount can't be removed as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
         }
     }
 }

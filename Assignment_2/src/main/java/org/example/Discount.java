@@ -6,16 +6,16 @@ public class Discount extends Offer {
     private int upperAge;
     private int percentage;
     private int id;
-    private int valid;
+    private int isOpen;
 
 
-    public Discount(String code, int lowerAge, int upperAge, int percentage, int id, int valid) {
+    public Discount(String code, int lowerAge, int upperAge, int percentage, int id, int isOpen) {
         this.code = code;
         this.lowerAge = lowerAge;
         this.upperAge = upperAge;
         this.percentage = percentage;
         this.id = id;
-        this.valid = valid;
+        this.isOpen = isOpen;
     }
 
     public String getCode() {
@@ -63,12 +63,12 @@ public class Discount extends Offer {
     }
 
     @Override
-    public int getValid() {
-        return valid;
+    public int getIsOpen() {
+        return isOpen;
     }
 
     @Override
-    public void setValid(int valid) {
-        this.valid = valid;
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
     }
 }
