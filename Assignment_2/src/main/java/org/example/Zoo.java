@@ -8,12 +8,16 @@ public class Zoo{
     private final HashMap<Integer, Attraction> attractions;
     private final HashMap<Integer, Visitor> visitors;
     private final HashMap<Integer, String> feedbacks;
+    private final HashMap<String, Discount> discounts;
+    private final HashMap<Integer, Deal> deals;
 
     public Zoo() {
         animals = new HashMap<>();
         visitors = new HashMap<>();
         feedbacks = new HashMap<>();
         attractions = new HashMap<>();
+        deals = new HashMap<>();
+        discounts = new HashMap<>();
     }
 
 
@@ -39,6 +43,14 @@ public class Zoo{
 
     public void addFeedback(Integer feedbackId, String abc) {
         feedbacks.put(feedbackId, abc);
+    }
+
+    public HashMap<String, Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public HashMap<Integer, Deal> getDeals() {
+        return deals;
     }
 
     public void addAttraction(Attraction attraction) {

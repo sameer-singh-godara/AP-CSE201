@@ -45,14 +45,17 @@ public class Animal implements Events{
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }

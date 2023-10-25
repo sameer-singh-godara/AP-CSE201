@@ -1,5 +1,74 @@
 package org.example;
 
 public class Discount extends Offer {
+    private String code;
+    private int lowerAge;
+    private int upperAge;
+    private int percentage;
+    private int id;
+    private int valid;
 
+
+    public Discount(String code, int lowerAge, int upperAge, int percentage, int id, int valid) {
+        this.code = code;
+        this.lowerAge = lowerAge;
+        this.upperAge = upperAge;
+        this.percentage = percentage;
+        this.id = id;
+        this.valid = valid;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getLowerAge() {
+        return lowerAge;
+    }
+
+    public void setLowerAge(int lowerAge) {
+        this.lowerAge = lowerAge;
+    }
+
+    public int getUpperAge() {
+        return upperAge;
+    }
+
+    public void setUpperAge(int upperAge) {
+        this.upperAge = upperAge;
+    }
+
+    @Override
+    public int getPercentage() {
+        return percentage;
+    }
+
+    @Override
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public int getValid() {
+        return valid;
+    }
+
+    @Override
+    public void setValid(int valid) {
+        this.valid = valid;
+    }
 }

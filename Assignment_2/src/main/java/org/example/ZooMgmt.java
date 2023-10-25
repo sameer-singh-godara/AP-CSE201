@@ -6,9 +6,11 @@ import java.util.*;
 
 public class ZooMgmt{
     public static void main(String[] args) {
-        int attractionId = 1;
-        int animalId = 1;
+        int attractionId = 0;
+        int animalId = 0;
         int visitorId = 0;
+        int discountId = 0;
+        int dealId = 0;
         int feedbackId = 0;
         int revenue = 0;
 
@@ -274,7 +276,56 @@ public class ZooMgmt{
                             }
                         }
                         else if (secondChoiceA == 4) {
-                            System.out.println("4");
+                            while (true) {
+                                System.out.println("Set Discount");
+                                System.out.println("1. Add New Discount");
+                                System.out.println("2. Update Discount");
+                                System.out.println("3. Remove Discount");
+                                System.out.println("4. Exit");
+                                int thirdChoiceV = sc.nextInt();
+                                sc.nextLine();
+                                if (thirdChoiceV == 1){
+                                    int lowerDiscountAge = 0;
+                                    int upperDiscountAge = Integer.MAX_VALUE;
+                                    System.out.println("Add New Discount");
+                                    System.out.println("Enter Coupon Code");
+                                    String discountCode = sc.nextLine();
+                                    while (true) {
+                                        System.out.println("Enter Age Limit");
+                                        System.out.println("1. Set Lower Age (Else it Would be Set to 0)");
+                                        System.out.println("2. Set Upper Age (Else it Would be Set to Maximum Value of Integer)");
+                                        System.out.println("3. Exit");
+                                        int fourthChoiceV = sc.nextInt();
+                                        if (fourthChoiceV == 1){
+                                            System.out.println("Enter The Lower Age Limit");
+                                            int lowerAge = sc.nextInt();
+                                            sc.nextLine();
+                                            lowerDiscountAge = lowerAge;
+                                        }
+                                        else if (fourthChoiceV == 2){
+                                            System.out.println("Enter The Upper Age Limit");
+                                            int upperAge = sc.nextInt();
+                                            sc.nextLine();
+                                            upperDiscountAge = upperAge;
+                                        }
+                                        else if (fourthChoiceV == 3){
+                                            break;
+                                        }
+                                        else {
+                                            System.out.println("You have Entered Wrong Command Try Again");
+                                        }
+                                    }
+                                    System.out.println("Enter Percentage");
+                                    int percentageDiscount = sc.nextInt();
+                                    sc.nextLine();
+
+
+
+
+
+                                }
+
+                            }
                         }
                         else if (secondChoiceA == 5) {
                             System.out.println("5");
