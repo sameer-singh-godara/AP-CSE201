@@ -6,7 +6,7 @@ public class Visitor extends Admin{
     private String name;
     private int age;
     private String phoneNumber;
-    private int balance;
+    private float balance;
     private String email;
 //    private String password;
     private int id;
@@ -16,7 +16,7 @@ public class Visitor extends Admin{
     private ArrayList<Attraction> attractionsPurchased;
 
 
-    public Visitor(String name, int age, String phoneNumber, int balance, String email, String password, int id) {
+    public Visitor(String name, int age, String phoneNumber, float balance, String email, String password, int id) {
         super(email, password);
         this.name = name;
         this.age = age;
@@ -53,11 +53,11 @@ public class Visitor extends Admin{
         this.phoneNumber = phoneNumber;
     }
 
-    public int getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 

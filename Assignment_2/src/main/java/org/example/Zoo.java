@@ -89,6 +89,9 @@ public class Zoo{
         discounts.put(discount.getCode(), discount);
     }
 
+    public void addDeal(Deal deal) {
+        deals.put(deal.getId(), deal);
+    }
 
     public boolean isValidPhoneNumber(String phoneNumber) {
         // Define a regular expression for a valid phone number format.
@@ -228,7 +231,7 @@ public class Zoo{
             return;
         }
         Discount discount = discounts.get(couponCode);
-        if (discount.getCode() == couponCode) {
+        if (discount.getCode().equals(couponCode)) {
             discount.setLowerAge(lowerNewAge);
             System.out.println("The Lower Age Limit of Coupon \"" + couponCode + "\" is set to " + lowerNewAge);
         }
@@ -239,7 +242,7 @@ public class Zoo{
             return;
         }
         Discount discount = discounts.get(couponCode);
-        if (discount.getCode() == couponCode) {
+        if (discount.getCode().equals(couponCode)) {
             discount.setUpperAge(upperNewAge);
             System.out.println("The Upper Age Limit of Coupon-Code \"" + couponCode + "\" is set to " + upperNewAge);
         }
@@ -250,7 +253,7 @@ public class Zoo{
             return;
         }
         Discount discount = discounts.get(couponCode);
-        if (discount.getCode() == couponCode) {
+        if (discount.getCode().equals(couponCode)) {
             discount.setPercentage(percentage);
             System.out.println("The Percentage Discount of Coupon-Code \"" + couponCode + "\" is set to " + percentage);
         }
@@ -261,13 +264,13 @@ public class Zoo{
             return;
         }
         Discount discount = discounts.get(couponCode);
-        if (discount.getCode() == couponCode) {
+        if (discount.getCode().equals(couponCode)) {
             discount.setIsOpen(isOpen);
             if (isOpen == 1){
-                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to Valid :" + isOpen);
+                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to Valid : " + isOpen);
             }
             else {
-                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to In-Valid :" + isOpen);
+                System.out.println("The Validity of Coupon-Code \"" + couponCode + "\" is set to In-Valid : " + isOpen);
             }
         }
     }
@@ -317,6 +320,56 @@ public class Zoo{
         }
         else {
             System.out.println("Discount can't be removed as Coupon-Code \"" + couponCode + "\" Doesn't Exist");
+        }
+    }
+
+
+    public void updateMinTicketDeal(int idInput, int minimumNewTicket) {
+        if (!deals.containsKey(idInput)){
+            System.out.println("Error in Updating Minimum Number of Tickets of Deal as ID " + idInput + " Doesn't Exist");
+            return;
+        }
+        Deal deal = deals.get(idInput);
+        if (deal.getId() == idInput){
+            deal.setMinimumTicket(minimumNewTicket);
+            System.out.println("The Minimum No. of Tickets for Deal with ID " + idInput + " is Updated to " + minimumNewTicket);
+        }
+    }
+    public void updatePercentageDeal(int idInput, int percentage) {
+        if (!deals.containsKey(idInput)){
+            System.out.println("Error in Updating Discount Percentage for Deal as ID " + idInput + " Doesn't Exist");
+            return;
+        }
+        Deal deal = deals.get(idInput);
+        if (deal.getId() == idInput){
+            deal.setPercentage(percentage);
+            System.out.println("The Discount Percentage for Deal with ID " + idInput + " is Updated to " + percentage);
+        }
+    }
+    public void updateValidityDeal(int idInput, int isOpen) {
+        if (!deals.containsKey(idInput)){
+            System.out.println("Error in Updating Validity of Tickets of Deal as ID " + idInput + " Doesn't Exist");
+            return;
+        }
+        Deal deal = deals.get(idInput);
+        if (deal.getId() == idInput){
+            deal.setIsOpen(isOpen);
+        }
+        if (isOpen == 1){
+            System.out.println("The Validity of Deal with ID " + idInput + " is set to Valid : " + isOpen);
+        }
+        else {
+            System.out.println("The Validity of Deal with ID " + idInput + " is set to In-Valid : " + isOpen);
+        }
+    }
+
+    public void removeDeal(int idInput) {
+        if (deals.containsKey(idInput)){
+            deals.remove(idInput);
+            System.out.println("Deal with ID " + idInput + " has been removed");
+        }
+        else {
+            System.out.println("Deal can't be removed as ID" + idInput + " Doesn't Exist");
         }
     }
 }
