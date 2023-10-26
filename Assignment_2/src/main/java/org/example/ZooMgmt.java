@@ -59,7 +59,8 @@ public class ZooMgmt{
                                     System.out.println("1. Add Attraction");
                                     System.out.println("2. Update Attraction");
                                     System.out.println("3. Remove Attraction");
-                                    System.out.println("4. Exit");
+                                    System.out.println("4. View All Attraction");
+                                    System.out.println("5. Exit");
 
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
@@ -135,7 +136,24 @@ public class ZooMgmt{
                                         sc.nextLine();
                                         zoo.removeAttraction(idInput);
                                     } else if (thirdChoiceA == 4) {
-                                        System.out.println("You have successfully gone to back menu");
+                                        System.out.println("Attraction in the Zoo are as follows:");
+                                        Attraction maxKey = null;
+                                        Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                        HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                        for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
+                                            maxKey = entry.getValue();
+                                            if (maxKey != null) {
+                                                if (maxKey.isOpen() == 1) {
+                                                    System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName() + " - Open");
+                                                } else if (maxKey.isOpen() == 0) {
+                                                    System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName() + " - Closed");
+                                                }
+                                            }
+                                        }
+                                        if (maxKey.equals(null)){
+                                            System.out.println("There Are No Attraction in Zoo");
+                                        }
+                                    } else if (thirdChoiceA == 5) {
                                         break;
                                     } else {
                                         System.out.println("Wrong Command Try Again");
@@ -224,6 +242,21 @@ public class ZooMgmt{
                                                 sc.nextLine();
                                                 zoo.updateAnimalSound(idInput, soundNewAnimal);
                                             } else if (fourthChoiceA == 4) {
+                                                System.out.println("Animals in the Zoo are as follows:");
+                                                Animal maxKey = null;
+                                                Map<Integer, Animal> animalMap = zoo.getAnimals();
+                                                HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                                for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
+                                                    maxKey = entry.getValue();
+                                                    if (maxKey != null) {
+                                                        System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName());
+                                                    }
+                                                }
+                                                if (maxKey.equals(null)){
+                                                    System.out.println("There Are No Animals in the Zoo");
+                                                }
+                                                
+                                            } else if (fourthChoiceA == 5) {
                                                 break;
                                             } else {
                                                 System.out.println("Try Again Wrong Command");
@@ -243,7 +276,6 @@ public class ZooMgmt{
                                     }
                                 }
                             }
-                            ///////////
                             else if (secondChoiceA == 3) {
                                 while (true) {
                                     System.out.println("--------------");
@@ -395,14 +427,14 @@ public class ZooMgmt{
                                         System.out.println("Deal Has been added Successfully");
                                         dealId++;
                                     } else if (thirdChoiceA == 2) {
-                                        System.out.println("Update Deal");
-                                        System.out.println("1. Update Minimum No. of Tickets for Deal");
-                                        System.out.println("2. Update Discount Percentage for Deal");
-                                        System.out.println("3. Update Validity for Deal");
-                                        System.out.println("4. Exit");
-                                        int fourthChoiceA = sc.nextInt();
-                                        sc.nextLine();
                                         while (true) {
+                                            System.out.println("Update Deal");
+                                            System.out.println("1. Update Minimum No. of Tickets for Deal");
+                                            System.out.println("2. Update Discount Percentage for Deal");
+                                            System.out.println("3. Update Validity for Deal");
+                                            System.out.println("4. Exit");
+                                            int fourthChoiceA = sc.nextInt();
+                                            sc.nextLine();
                                             if (fourthChoiceA == 1) {
                                                 System.out.println("Enter Deal ID whose Minimum No. of Ticket You Want to Change");
                                                 int idInput = sc.nextInt();
@@ -615,11 +647,11 @@ public class ZooMgmt{
                                                         for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
                                                             maxKey = entry.getValue();
                                                             if (maxKey != null) {
-                                                                System.out.println(entry.getKey() + ". " + (entry.getValue()).getName());
+                                                                System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName());
                                                             }
                                                         }
                                                         if (maxKey != null) {
-                                                            System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                            System.out.println("Enter the ID for Animal's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (animals.containsKey(fifthChoiceV)) {
                                                                 System.out.println(animals.get(fifthChoiceV).getName() + ":" + animals.get(fifthChoiceV).getDescription());
@@ -638,14 +670,14 @@ public class ZooMgmt{
                                                             maxKey = entry.getValue();
                                                             if (maxKey != null) {
                                                                 if (maxKey.isOpen() == 1) {
-                                                                    System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
+                                                                    System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
                                                                 } else if (maxKey.isOpen() == 0) {
-                                                                    System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
+                                                                    System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
                                                                 }
                                                             }
                                                         }
                                                         if (maxKey != null) {
-                                                            System.out.println("Enter Whose Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                            System.out.println("Enter The ID for Attraction's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (attractions.containsKey(fifthChoiceV)) {
                                                                 System.out.println(attractions.get(fifthChoiceV).getName() + ":" + attractions.get(fifthChoiceV).getDescription());
@@ -668,30 +700,112 @@ public class ZooMgmt{
                                                         System.out.println("1. Basic Membership (₹20)");
                                                         System.out.println("2. Premium Membership (₹50)");
                                                         System.out.println("3. Exit");
+
                                                         int fourthChoiceV = sc.nextInt();
                                                         sc.nextLine();
                                                         if (fourthChoiceV == 1) {
-                                                            if (visitor.getBalance() >= 20) {
+                                                            ////////// Discount Coupon Section
+                                                            float price = 20;
+                                                            float discountPercentage;
+                                                            Discount sampleDiscount = null;
+                                                            System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
+                                                            Map<String, Discount> discountMap = zoo.getDiscounts();
+                                                            HashMap<String, Discount> discounts = zoo.getDiscounts();
+                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
+                                                                sampleDiscount = entry.getValue();
+                                                                if (sampleDiscount != null) {
+                                                                    if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
+                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (sampleDiscount != null) {
+                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                while (true) {
+                                                                    System.out.println("Enter Coupon Code");
+                                                                    String couponInput = sc.nextLine();
+                                                                    if (discountsVisitor.containsKey(couponInput)) {
+                                                                        discountPercentage = discountsVisitor.get(couponInput);
+                                                                        break;
+                                                                    } else if (couponInput.equals("NONE")) {
+                                                                        discountPercentage = 0;
+                                                                        break;
+                                                                    } else {
+                                                                        System.out.println("Enter Correct Coupon Code");
+                                                                    }
+                                                                }
+                                                            }
+                                                            else {
+                                                                discountPercentage = 0;
+                                                                System.out.println("There Are No Valid Coupons for You");
+                                                            }
+                                                            price = (price - (price*((discountPercentage)/100)));
+                                                            /////////////
+                                                            if (visitor.getBalance() >= price) {
                                                                 visitor.setMembership(1);
                                                                 float balanceV = visitor.getBalance();
-                                                                visitor.setBalance(balanceV - 20);
+                                                                visitor.setBalance(balanceV - price);
                                                                 System.out.println("You have Successfully Purchased Basic Membership");
                                                                 System.out.println("Your balance is: ₹" + visitor.getBalance());
-                                                                revenue += 20;
+                                                                revenue += price;
                                                                 break;
-                                                            } else {
+                                                            }
+                                                            else {
                                                                 System.out.println("Low Balance Recharge Your Balance");
                                                                 System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                                 break;
                                                             }
-                                                        } else if (fourthChoiceV == 2) {
-                                                            if (visitor.getBalance() >= 50) {
+                                                        }
+                                                        else if (fourthChoiceV == 2) {
+                                                            ////////// Discount Coupon Section
+                                                            float price = 50;
+                                                            float discountPercentage;
+                                                            Discount sampleDiscount = null;
+                                                            System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
+                                                            Map<String, Discount> discountMap = zoo.getDiscounts();
+                                                            HashMap<String, Discount> discounts = zoo.getDiscounts();
+                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
+                                                                sampleDiscount = entry.getValue();
+                                                                if (sampleDiscount != null) {
+                                                                    if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
+                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (sampleDiscount != null) {
+                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                while (true) {
+                                                                    System.out.println("Enter Coupon Code");
+                                                                    String couponInput = sc.nextLine();
+                                                                    if (discountsVisitor.containsKey(couponInput)) {
+                                                                        discountPercentage = discountsVisitor.get(couponInput);
+                                                                        break;
+                                                                    } else if (couponInput.equals("NONE")) {
+                                                                        discountPercentage = 0;
+                                                                        break;
+                                                                    } else {
+                                                                        System.out.println("Enter Correct Coupon Code");
+                                                                    }
+                                                                }
+                                                            }
+                                                            else {
+                                                                discountPercentage = 0;
+                                                                System.out.println("There Are No Valid Coupons for You");
+                                                            }
+                                                            price = (price - (price*((discountPercentage)/100)));
+                                                            /////////////
+
+                                                            if (visitor.getBalance() >= price) {
                                                                 visitor.setMembership(2);
                                                                 float balanceV = visitor.getBalance();
-                                                                visitor.setBalance(balanceV - 50);
+                                                                visitor.setBalance(balanceV - price);
                                                                 System.out.println("You have Successfully Purchased Premium Membership");
                                                                 System.out.println("Your balance is: ₹" + visitor.getBalance());
-                                                                revenue += 50;
+                                                                revenue += price;
                                                                 break;
                                                             } else {
                                                                 System.out.println("Low Balance Recharge Your Balance");
@@ -710,13 +824,53 @@ public class ZooMgmt{
                                                         int fourthChoiceV = sc.nextInt();
                                                         sc.nextLine();
                                                         if (fourthChoiceV == 1) {
-                                                            if (visitor.getBalance() >= 30) {
+                                                            ////////// Discount Coupon Section
+                                                            float price = 30;
+                                                            float discountPercentage;
+                                                            Discount sampleDiscount = null;
+                                                            System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
+                                                            Map<String, Discount> discountMap = zoo.getDiscounts();
+                                                            HashMap<String, Discount> discounts = zoo.getDiscounts();
+                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
+                                                                sampleDiscount = entry.getValue();
+                                                                if (sampleDiscount != null) {
+                                                                    if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
+                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (sampleDiscount != null) {
+                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                while (true) {
+                                                                    System.out.println("Enter Coupon Code");
+                                                                    String couponInput = sc.nextLine();
+                                                                    if (discountsVisitor.containsKey(couponInput)) {
+                                                                        discountPercentage = discountsVisitor.get(couponInput);
+                                                                        break;
+                                                                    } else if (couponInput.equals("NONE")) {
+                                                                        discountPercentage = 0;
+                                                                        break;
+                                                                    } else {
+                                                                        System.out.println("Enter Correct Coupon Code");
+                                                                    }
+                                                                }
+                                                            }
+                                                            else {
+                                                                discountPercentage = 0;
+                                                                System.out.println("There Are No Valid Coupons for You");
+                                                            }
+                                                            price = (price - (price*((discountPercentage)/100)));
+                                                            /////////////
+
+                                                            if (visitor.getBalance() >= price) {
                                                                 visitor.setMembership(2);
                                                                 float balanceV = visitor.getBalance();
-                                                                visitor.setBalance(balanceV - 30);
+                                                                visitor.setBalance(balanceV - price);
                                                                 System.out.println("You have Successfully Upgraded to Premium Membership");
                                                                 System.out.println("Your balance is: ₹" + visitor.getBalance());
-                                                                revenue += 30;
+                                                                revenue += price;
                                                                 break;
                                                             } else {
                                                                 System.out.println("Low Balance Recharge Your Balance");
@@ -743,32 +897,98 @@ public class ZooMgmt{
                                                     sc.nextLine();
                                                     System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
                                                     Attraction maxKey = null;
+                                                    int flag1 = 0;
                                                     Map<Integer, Attraction> attractionMap = zoo.getAttractions();
                                                     HashMap<Integer, Attraction> attractions = zoo.getAttractions();
                                                     for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
                                                         maxKey = entry.getValue();
                                                         if (maxKey != null && maxKey.isOpen() == 1) {
                                                             System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - ( ₹" + (entry.getValue()).getPrice() + ")");
+                                                            flag1 = 1;
                                                         }
                                                     }
-                                                    if (maxKey != null && maxKey.isOpen() == 1) {
-                                                        int fourthChoiceV = sc.nextInt();
-                                                        sc.nextLine();
-                                                        if (visitor.getBalance() >= ((attractions.get(fourthChoiceV)).getPrice()) * numberTicket) {
+
+
+                                                    if (maxKey != null && flag1 == 1) {
+                                                        int fourthChoiceV;
+                                                        while (true){
+                                                            fourthChoiceV = sc.nextInt();
+                                                            sc.nextLine();
+                                                            if (attractions.containsKey(fourthChoiceV) && attractions.get(fourthChoiceV).isOpen() == 1){
+                                                                break;
+                                                            }
+                                                            else {
+                                                                if (attractions.containsKey(fourthChoiceV)) {
+                                                                    System.out.println("The Attraction with ID " + fourthChoiceV + " is Closed Choose Another One which is Open");
+                                                                }
+                                                                else {
+                                                                    System.out.println("The Attraction with ID " + fourthChoiceV + " Doesn't Exist");
+                                                                }
+                                                            }
+                                                        }
+
+
+                                                        ////////// Discount Coupon Section
+                                                        float price = numberTicket * attractions.get(fourthChoiceV).getPrice();
+                                                        float discountPercentage;
+                                                        Discount sampleDiscount = null;
+                                                        System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
+                                                        Map<String, Discount> discountMap = zoo.getDiscounts();
+                                                        HashMap<String, Discount> discounts = zoo.getDiscounts();
+                                                        HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                        for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
+                                                            sampleDiscount = entry.getValue();
+                                                            if (sampleDiscount != null) {
+                                                                if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
+                                                                    System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                    discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                }
+                                                            }
+                                                        }
+                                                        if (sampleDiscount != null) {
+                                                            System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                            while (true) {
+                                                                System.out.println("Enter Coupon Code");
+                                                                String couponInput = sc.nextLine();
+                                                                if (discountsVisitor.containsKey(couponInput)) {
+                                                                    discountPercentage = discountsVisitor.get(couponInput);
+                                                                    break;
+                                                                } else if (couponInput.equals("NONE")) {
+                                                                    discountPercentage = 0;
+                                                                    break;
+                                                                } else {
+                                                                    System.out.println("Enter Correct Coupon Code");
+                                                                }
+                                                            }
+                                                        }
+                                                        else {
+                                                            discountPercentage = 0;
+                                                            System.out.println("There Are No Valid Coupons for You");
+                                                        }
+                                                        price = (price - (price*((discountPercentage)/100)));
+                                                        /////////////
+
+                                                        if (visitor.getBalance() >= price) {
                                                             for (int i = 0; i < numberTicket; i++) {
                                                                 visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
                                                             }
-                                                            revenue += (numberTicket * ((attractions.get(fourthChoiceV)).getPrice()));
+                                                            revenue += price;
                                                             float balanceV = visitor.getBalance();
-                                                            visitor.setBalance(balanceV - (((attractions.get(fourthChoiceV)).getPrice()) * numberTicket));
-                                                            System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of ₹" + (attractions.get(fourthChoiceV)).getName());
+                                                            visitor.setBalance(balanceV - price);
+                                                            System.out.println("You have Successfully Purchased " + numberTicket + " Tickets of ₹" + price);
                                                             System.out.println("Your balance is: " + visitor.getBalance());
                                                         } else {
                                                             System.out.println("Low balance Recharge First");
                                                             System.out.println("Your balance is: ₹" + visitor.getBalance());
                                                         }
                                                     } else {
-                                                        System.out.println("There are no Attraction in the Zoo or All Attractions are Closed Wait it to be Scheduled");
+                                                        if (maxKey != null && flag1 == 0) {
+                                                            System.out.println("All Attractions are Closed now Wait till it gets Open");
+                                                        }
+                                                        else {
+                                                            System.out.println("There are No Attractions in the Zoo");
+                                                        }
+
                                                     }
                                                 } else {
                                                     System.out.println("Go and First Buy Membership, Then come here to Visit Attraction");
@@ -797,7 +1017,7 @@ public class ZooMgmt{
                                                     maxKey = entry.getValue();
                                                     if (maxKey != null) {
                                                         if (maxKey.getIsOpen() == 1){
-                                                            System.out.println(maxKey.getId() + ". Purchasing More than " + maxKey.getMinimumTicket() + " Tickets, You will get Discount of " + maxKey.getPercentage() + "% on Your Purchase Amount");
+                                                            System.out.println("Deal ID: " + maxKey.getId() + " - Purchasing " + maxKey.getMinimumTicket() + " Tickets or More Than " + maxKey.getMinimumTicket() + " Tickets, You will get Discount of " + maxKey.getPercentage() + "% on Your Purchase Amount");
                                                         }
                                                     }
                                                 }
