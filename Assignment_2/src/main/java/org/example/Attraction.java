@@ -7,15 +7,17 @@ public class Attraction implements Events{
     private int id;
     private int price;
     private int availability;
-    private int numberOfVisitors;
+    private int ticketedVisitors;
+    private int totalVisitors;
 
-    public Attraction(String name, String description, int id, int price, int availability, int numberOfVisitors) {
+    public Attraction(String name, String description, int id, int price, int availability, int numberOfVisitors, int totalVisitors) {
         this.name = name;
         this.description = description;
         this.id = id;
         this.price = price;
         this.availability = availability;
-        this.numberOfVisitors = numberOfVisitors;
+        this.ticketedVisitors = numberOfVisitors;
+        this.totalVisitors = totalVisitors;
     }
     @Override
     public String getDescription() {
@@ -79,11 +81,19 @@ public class Attraction implements Events{
     }
 
     public int getNumberOfVisitors() {
-        return numberOfVisitors;
+        return ticketedVisitors;
     }
 
     public void setNumberOfVisitors(int numberOfVisitors) {
-        this.numberOfVisitors = numberOfVisitors;
+        this.ticketedVisitors = numberOfVisitors;
+    }
+
+    public int getTotalVisitors() {
+        return totalVisitors;
+    }
+
+    public void setTotalVisitors(int totalVisitors) {
+        this.totalVisitors = totalVisitors;
     }
 
     @Override

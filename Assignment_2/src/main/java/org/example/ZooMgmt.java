@@ -21,7 +21,7 @@ public class ZooMgmt{
         String username = "admin";
         String password = "admin123";
 
-        
+
 
         while(true){
             System.out.println("--------------");
@@ -77,7 +77,7 @@ public class ZooMgmt{
                                         System.out.println("Enter Attraction Price");
                                         int priceAtt = sc.nextInt();
                                         sc.nextLine();
-                                        Attraction attraction = new Attraction(nameAtt, descriptionAtt, attractionId, priceAtt, 0, 0);
+                                        Attraction attraction = new Attraction(nameAtt, descriptionAtt, attractionId, priceAtt, 0, 0, 0);
                                         zoo.addAttraction(attraction);
                                         System.out.println("The Attraction is Registered Successfully with ID : " + attractionId);
                                         attractionId++;
@@ -572,7 +572,7 @@ public class ZooMgmt{
                                 Map<Integer, Attraction> attractionHashMap = zoo.getAttractions();
                                 for (Map.Entry<Integer, Attraction> entry : attractionHashMap.entrySet()) {
 
-                                    int val = (entry.getValue()).getNumberOfVisitors();
+                                    int val = (entry.getValue()).getTotalVisitors();
                                     if (val > max) {
                                         max = val;
                                         maxKey = entry.getValue();
@@ -1247,13 +1247,14 @@ public class ZooMgmt{
                                                                         } else {
                                                                             System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
                                                                             (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
+                                                                            int ticketedVisitors = attractions.get(fourthChoiceV).getNumberOfVisitors();
+                                                                            ticketedVisitors++;
+                                                                            attractions.get(fourthChoiceV).setNumberOfVisitors(ticketedVisitors);
                                                                             // System.out.println(visitor.getAttractionsPurchased());
                                                                         }
                                                                         totalVisitorsVisited++;
                                                                         totalVisitorsVisitedAnimalsIncluded++;
-                                                                        int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
-                                                                        numberOfVisitorsForAttraction++;
-                                                                        attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
+
                                                                     } else {
                                                                         System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
                                                                         break;
