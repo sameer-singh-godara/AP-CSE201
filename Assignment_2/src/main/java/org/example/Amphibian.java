@@ -20,6 +20,11 @@ public class Amphibian extends Animal{
 
     @Override
     public String getFeed() {
-        return "Sound of this " + this.getType() + " named " + super.getName() + " is" + super.getFeed();
+        return "Sound of this " + this.getType() + " named " + super.getName() + " is " + super.getFeed();
+    }
+
+    @Override
+    public void description() {
+        System.out.println("Description of this " + this.getType() + " named " + super.getName() + " is " + super.getDescription());
     }
 }

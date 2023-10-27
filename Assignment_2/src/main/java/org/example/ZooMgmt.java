@@ -183,23 +183,19 @@ public class ZooMgmt{
                                         String descriptionAnimal = sc.nextLine();
                                         System.out.println("Enter Animal Sound");
                                         String feedAnimal = sc.nextLine();
-                                        System.out.println("Enter Animal Type");
-                                        System.out.println("1. Mammal");
-                                        System.out.println("2. Reptile");
-                                        System.out.println("3. Amphibian");
-                                        System.out.println("Enter The Your Choice");
-                                        int animalType = sc.nextInt();
-                                        sc.nextLine();
                                         while (true) {
-                                            if (animalType == 1) {
+                                            System.out.println("Enter Animal Type Choose Among These Only [Mammal, Reptile, Amphibian]");
+                                            String animalType = sc.nextLine();
+                                            animalType.toLowerCase();
+                                            if (animalType.equals("mammal")) {
                                                 Mammal animal = new Mammal(nameAnimal, animalId, descriptionAnimal, feedAnimal);
                                                 zoo.addMammal(animal);
                                                 break;
-                                            } else if (animalType == 2) {
+                                            } else if (animalType.equals("reptile")) {
                                                 Reptile animal = new Reptile(nameAnimal, animalId, descriptionAnimal, feedAnimal);
                                                 zoo.addReptile(animal);
                                                 break;
-                                            } else if (animalType == 3) {
+                                            } else if (animalType.equals("amphibian")) {
                                                 Amphibian animal = new Amphibian(nameAnimal, animalId, descriptionAnimal, feedAnimal);
                                                 zoo.addAmphibian(animal);
                                                 break;
@@ -217,7 +213,8 @@ public class ZooMgmt{
                                             System.out.println("1. Update Name");
                                             System.out.println("2. Update Description");
                                             System.out.println("3. Update Sound");
-                                            System.out.println("4. Exit");
+                                            System.out.println("4. Update Type");
+                                            System.out.println("5. Exit");
                                             System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
@@ -246,6 +243,40 @@ public class ZooMgmt{
                                                 sc.nextLine();
                                                 zoo.updateAnimalSound(idInput, soundNewAnimal);
                                             } else if (fourthChoiceA == 4) {
+                                                System.out.println("--------------");
+                                                System.out.println("Enter Animal ID");
+                                                int idInput = sc.nextInt();
+                                                sc.nextLine();
+                                                if (zoo.getAnimals().containsKey(idInput)){
+                                                    String nameAnimal = zoo.getAnimals().get(idInput).getName();
+                                                    String descriptionAnimal = zoo.getAnimals().get(idInput).getDescription();
+                                                    String feedAnimal = zoo.getAnimals().get(idInput).getFeed();
+                                                    zoo.removeAnimalUpdateType(idInput);
+                                                    while (true) {
+                                                        System.out.println("Enter Animal Type Choose Among These Only [Mammal, Reptile, Amphibian]");
+                                                        String animalType = sc.nextLine();
+                                                        animalType.toLowerCase();
+                                                        if (animalType.equals("mammal")) {
+                                                            Mammal animal = new Mammal(nameAnimal, idInput, descriptionAnimal, feedAnimal);
+                                                            zoo.addMammal(animal);
+                                                            System.out.println("Type of Animal with ID " + idInput + " has been updated to " + animal.getType());
+                                                            break;
+                                                        } else if (animalType.equals("reptile")) {
+                                                            Reptile animal = new Reptile(nameAnimal, idInput, descriptionAnimal, feedAnimal);
+                                                            zoo.addReptile(animal);
+                                                            System.out.println("Type of Animal with ID " + idInput + " has been updated to " + animal.getType());
+                                                            break;
+                                                        } else if (animalType.equals("amphibian")) {
+                                                            Amphibian animal = new Amphibian(nameAnimal, idInput, descriptionAnimal, feedAnimal);
+                                                            zoo.addAmphibian(animal);
+                                                            System.out.println("Type of Animal with ID " + idInput + " has been updated to " + animal.getType());
+                                                            break;
+                                                        } else {
+                                                            System.out.println("Wrong Command Try Again");
+                                                        }
+                                                    }
+                                                }
+                                            } else if (fourthChoiceA == 5) {
                                                 break;
                                             } else {
                                                 System.out.println("Try Again Wrong Command");
@@ -743,7 +774,7 @@ public class ZooMgmt{
                                                             System.out.println("Enter The ID for Attraction's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (attractions.containsKey(fifthChoiceV)) {
-                                                                System.out.println(attractions.get(fifthChoiceV).getName() + "'s Description:" + attractions.get(fifthChoiceV).getDescription());
+                                                                System.out.print(attractions.get(fifthChoiceV).getName() + "'s Description: " + attractions.get(fifthChoiceV).getDescription());
                                                             } else {
                                                                 System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
@@ -1153,28 +1184,27 @@ public class ZooMgmt{
                                                                     int fifthChoiceV = sc.nextInt();
                                                                     if (fifthChoiceV == 1) {
                                                                         if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
-                                                                            System.out.println(mammals.get(fourthChoiceV).getName() + " : " + mammals.get(fourthChoiceV).getFeed());
+                                                                            System.out.println(mammals.get(fourthChoiceV).getFeed());
                                                                         }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
-                                                                            System.out.println(reptiles.get(fourthChoiceV).getName() + " : " + reptiles.get(fourthChoiceV).getFeed());
+                                                                            System.out.println(reptiles.get(fourthChoiceV).getFeed());
                                                                         }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
-                                                                            System.out.println(amphibians.get(fourthChoiceV).getName() + " : " + amphibians.get(fourthChoiceV).getFeed());
+                                                                            System.out.println(amphibians.get(fourthChoiceV).getFeed());
                                                                         }
-                                                                        System.out.println("The above Method is Overridden in Sub Class");
-                                                                        System.out.println("The following Method is the Actual in Parent Class");
-                                                                        System.out.println("Hence Polymorphism is Used");
-                                                                        System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getFeed());
+//                                                                        System.out.println("The above Method is Overridden in Sub Class");
+//                                                                        System.out.println("The following Method is the Actual in Parent Class");
+//                                                                        System.out.println("Hence Polymorphism is Used");
                                                                     } else if (fifthChoiceV == 2) {
                                                                         if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
-                                                                            System.out.println(mammals.get(fourthChoiceV).getName() + " : " + mammals.get(fourthChoiceV).getDescription());
+                                                                            mammals.get(fourthChoiceV).description();
                                                                         }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
-                                                                            System.out.println(reptiles.get(fourthChoiceV).getName() + " : " + reptiles.get(fourthChoiceV).getDescription());
+                                                                            reptiles.get(fourthChoiceV).description();
                                                                         }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
-                                                                            System.out.println(amphibians.get(fourthChoiceV).getName() + " : " + amphibians.get(fourthChoiceV).getDescription());
+                                                                            amphibians.get(fourthChoiceV).description();
                                                                         }
-                                                                        System.out.println("The above Method is Overridden in Sub Class");
-                                                                        System.out.println("The following Method is the Actual in Parent Class");
-                                                                        System.out.println("Hence Polymorphism is Used");
-                                                                        System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getDescription());
+//                                                                        System.out.println("The above Method is Overridden in Sub Class");
+//                                                                        System.out.println("The following Method is the Actual in Parent Class");
+//                                                                        System.out.println("Hence Polymorphism is Used");
+
                                                                     } else if (fifthChoiceV == 3) {
                                                                         System.out.println("Going Back Successfully");
                                                                         totalVisitorsVisitedAnimalsIncluded++;

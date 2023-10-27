@@ -372,4 +372,17 @@ public class Zoo{
             System.out.println("Deal can't be removed as ID" + idInput + " Doesn't Exist");
         }
     }
+
+    public void removeAnimalUpdateType(int idInput) {
+        String type = animals.get(idInput).getType();
+        if (type.equals("Mammal")){
+            mammals.remove(idInput);
+        } else if (type.equals("Reptile")) {
+            reptiles.remove(idInput);
+        } else if (type.equals("Amphibian")) {
+            amphibians.remove(idInput);
+        }
+        animals.remove(idInput);
+    }
+
 }
