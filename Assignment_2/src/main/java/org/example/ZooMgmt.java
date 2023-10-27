@@ -309,6 +309,7 @@ public class ZooMgmt{
                                 }
                             } else if (secondChoiceA == 4) {
                                 while (true) {
+                                    System.out.println("--------------");
                                     System.out.println("Set Discount");
                                     System.out.println("1. Add New Discount");
                                     System.out.println("2. Update Discount");
@@ -321,6 +322,7 @@ public class ZooMgmt{
                                     if (thirdChoiceA == 1) {
                                         int lowerDiscountAge = 0;
                                         int upperDiscountAge = Integer.MAX_VALUE;
+                                        System.out.println("--------------");
                                         System.out.println("Add New Discount");
                                         System.out.println("Enter Coupon Code");
                                         String discountCode = sc.nextLine();
@@ -357,6 +359,7 @@ public class ZooMgmt{
                                         discountId++;
                                     } else if (thirdChoiceA == 2) {
                                         while (true) {
+                                            System.out.println("--------------");
                                             System.out.println("Update Discount");
                                             System.out.println("1. Update Lower Limit of Discount");
                                             System.out.println("2. Update Upper Limit of Discount");
@@ -401,6 +404,7 @@ public class ZooMgmt{
                                             }
                                         }
                                     } else if (thirdChoiceA == 3) {
+                                        System.out.println("--------------");
                                         System.out.println("Remove Discount from Data-Base");
                                         System.out.println("Enter The Coupon Code");
                                         String couponCode = sc.nextLine();
@@ -429,6 +433,7 @@ public class ZooMgmt{
                                 }
                             } else if (secondChoiceA == 5) {
                                 while (true) {
+                                    System.out.println("--------------");
                                     System.out.println("Special Deals");
                                     System.out.println("1. Add Deal");
                                     System.out.println("2. Update Deal");
@@ -439,6 +444,8 @@ public class ZooMgmt{
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
                                     if (thirdChoiceA == 1) {
+                                        System.out.println("--------------");
+                                        System.out.println("Add Deal");
                                         System.out.println("Enter Minimum Number of Ticket for Deal");
                                         int minimumTicket = sc.nextInt();
                                         sc.nextLine();
@@ -451,6 +458,7 @@ public class ZooMgmt{
                                         dealId++;
                                     } else if (thirdChoiceA == 2) {
                                         while (true) {
+                                            System.out.println("--------------");
                                             System.out.println("Update Deal");
                                             System.out.println("1. Update Minimum No. of Tickets for Deal");
                                             System.out.println("2. Update Discount Percentage for Deal");
@@ -459,6 +467,7 @@ public class ZooMgmt{
                                             System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
+                                            System.out.println("--------------");
                                             if (fourthChoiceA == 1) {
                                                 System.out.println("Enter Deal ID whose Minimum No. of Ticket You Want to Change");
                                                 int idInput = sc.nextInt();
@@ -490,12 +499,14 @@ public class ZooMgmt{
                                             }
                                         }
                                     } else if (thirdChoiceA == 3) {
+                                        System.out.println("--------------");
                                         System.out.println("Remove Deal from Data-Base");
                                         System.out.println("Enter Deal ID");
                                         int idInput = sc.nextInt();
                                         sc.nextLine();
                                         zoo.removeDeal(idInput);
                                     } else if (thirdChoiceA == 4) {
+                                        System.out.println("--------------");
                                         System.out.println("View Deals");
                                         Deal maxKey;
                                         Map<Integer, Deal> dealMap = zoo.getDeals();
@@ -518,6 +529,7 @@ public class ZooMgmt{
                                     }
                                 }
                             } else if (secondChoiceA == 6) {
+                                System.out.println("--------------");
                                 System.out.println("Visitor Statistics");
                                 System.out.println("1. Total number of Visitors Visited Attraction : " + totalVisitorsVisited);
                                 System.out.println("2. Total number of Visitors Visited Attraction including Animals: " + totalVisitorsVisitedAnimalsIncluded);
@@ -540,6 +552,7 @@ public class ZooMgmt{
                                     System.out.println("4. There Are No Attraction Hence No Popular Attraction");
                                 }
                             } else if (secondChoiceA == 7) {
+                                System.out.println("--------------");
                                 System.out.println("Feedbacks of Visitors are as follows:");
                                 Map<Integer, String> feedbacksHashMap = zoo.getFeedbacks();
                                 String keyValue = null;
@@ -555,6 +568,7 @@ public class ZooMgmt{
 
                             }
                             else if (secondChoiceA == 8) {
+                                System.out.println("--------------");
                                 System.out.println("Exited Successfully");
                                 break;
                             }
@@ -565,12 +579,14 @@ public class ZooMgmt{
                     }
                     else {
                         if (tryLogin > 0) {
+                            System.out.println("--------------");
                             System.out.println("You have entered wrong username or password Try Again");
                             System.out.println("Tries Left : " + tryLogin);
                             tryLogin--;
                             continue;
                         }
                         else {
+                            System.out.println("--------------");
                             System.out.println("You Don't Know Either Username or Password");
                             System.out.println("Therefore Exited");
                             break;
@@ -673,8 +689,10 @@ public class ZooMgmt{
                                             sc.nextLine();
 
                                             if (thirdChoiceV == 1) {
+                                                System.out.println("--------------");
                                                 System.out.println("Explore Zoo");
                                                 while (true) {
+                                                    System.out.println("--------------");
                                                     System.out.println("1. View Animals");
                                                     System.out.println("2. View Attraction");
                                                     System.out.println("3. Exit");
@@ -682,6 +700,7 @@ public class ZooMgmt{
                                                     int fourthChoiceV = sc.nextInt();
                                                     sc.nextLine();
                                                     if (fourthChoiceV == 1) {
+                                                        System.out.println("--------------");
                                                         System.out.println("Animals in the Zoo are as follows:");
                                                         Animal maxKey = null;
                                                         Map<Integer, Animal> animalMap = zoo.getAnimals();
@@ -698,12 +717,14 @@ public class ZooMgmt{
                                                             if (animals.containsKey(fifthChoiceV)) {
                                                                 System.out.println(animals.get(fifthChoiceV).getName() + "'s Description:" + animals.get(fifthChoiceV).getDescription());
                                                             } else {
+                                                                System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                             }
                                                         } else {
                                                             System.out.println("There are no Animals in the Zoo");
                                                         }
                                                     } else if (fourthChoiceV == 2) {
+                                                        System.out.println("--------------");
                                                         System.out.println("Attraction in the Zoo are as follows:");
                                                         Attraction maxKey = null;
                                                         Map<Integer, Attraction> attractionMap = zoo.getAttractions();
@@ -724,6 +745,7 @@ public class ZooMgmt{
                                                             if (attractions.containsKey(fifthChoiceV)) {
                                                                 System.out.println(attractions.get(fifthChoiceV).getName() + "'s Description:" + attractions.get(fifthChoiceV).getDescription());
                                                             } else {
+                                                                System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                             }
                                                         } else {
@@ -732,12 +754,14 @@ public class ZooMgmt{
                                                     } else if (fourthChoiceV == 3) {
                                                         break;
                                                     } else {
+                                                        System.out.println("--------------");
                                                         System.out.println("Wrong Command Try Again");
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 2) {
                                                 while (true) {
                                                     if (visitor.getMembership() == 0) {
+                                                        System.out.println("--------------");
                                                         System.out.println("Buy Membership:");
                                                         System.out.println("1. Basic Membership (₹20)");
                                                         System.out.println("2. Premium Membership (₹50)");
@@ -751,6 +775,7 @@ public class ZooMgmt{
                                                             float price = 20;
                                                             float discountPercentage;
                                                             Discount sampleDiscount = null;
+                                                            System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
@@ -806,6 +831,7 @@ public class ZooMgmt{
                                                             float price = 50;
                                                             float discountPercentage;
                                                             Discount sampleDiscount = null;
+                                                            System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
@@ -858,9 +884,11 @@ public class ZooMgmt{
                                                         } else if (fourthChoiceV == 3) {
                                                             break;
                                                         } else {
+                                                            System.out.println("--------------");
                                                             System.out.println("Wrong Command Try Again");
                                                         }
                                                     } else if (visitor.getMembership() == 1) {
+                                                        System.out.println("--------------");
                                                         System.out.println("Upgrade Membership, you currently have Basic Membership:");
                                                         System.out.println("1. Premium Membership (₹30) (Only the difference between both membership is to be paid)");
                                                         System.out.println("2. Exit");
@@ -872,6 +900,7 @@ public class ZooMgmt{
                                                             float price = 30;
                                                             float discountPercentage;
                                                             Discount sampleDiscount = null;
+                                                            System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
@@ -927,19 +956,21 @@ public class ZooMgmt{
                                                             System.out.println("Wrong Command Try Again");
                                                         }
                                                     } else if (visitor.getMembership() == 2) {
+                                                        System.out.println("--------------");
                                                         System.out.println("You Already have Premium Membership");
                                                         break;
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 3) {
                                                 if (visitor.getMembership() == 2) {
+                                                    System.out.println("--------------");
                                                     System.out.println("You Don't need to buy Tickets for Attraction, As you are Premium Member");
                                                 } else if (visitor.getMembership() == 1) {
+                                                    System.out.println("--------------");
                                                     System.out.println("Buy Tickets");
                                                     System.out.println("Enter the number of tickets");
                                                     int numberTicket = sc.nextInt();
                                                     sc.nextLine();
-
                                                     System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
                                                     Attraction maxKey = null;
                                                     int flag1 = 0;
@@ -977,6 +1008,7 @@ public class ZooMgmt{
                                                         float price = numberTicket * attractions.get(fourthChoiceV).getPrice();
                                                         float discountPercentage;
                                                         Discount sampleDiscount = null;
+                                                        System.out.println("--------------");
                                                         System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                         Map<String, Discount> discountMap = zoo.getDiscounts();
                                                         HashMap<String, Discount> discounts = zoo.getDiscounts();
@@ -1020,6 +1052,7 @@ public class ZooMgmt{
                                                         HashMap<Integer, Deal> deals = zoo.getDeals();
                                                         TreeSet<Integer> sortedKeys = new TreeSet<>(deals.keySet());
                                                         Integer smallerKey = sortedKeys.lower(numberTicket);
+                                                        System.out.println("--------------");
                                                         if (smallerKey == null) {
                                                             System.out.println("No Deal is Applied To Your Purchase");
                                                         }
@@ -1061,6 +1094,7 @@ public class ZooMgmt{
                                                     System.out.println("Go and First Buy Membership, Then come here to Buy Tickets for Attraction");
                                                 }
                                             } else if (thirdChoiceV == 4) {
+                                                System.out.println("--------------");
                                                 System.out.println("View Discounts");
                                                 System.out.println("The Discount which are Active Now are Given As Follows");
                                                 Discount maxKey;
@@ -1075,7 +1109,8 @@ public class ZooMgmt{
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 5) {
-                                                System.out.println("View Deals");
+                                                System.out.println("--------------");
+                                                System.out.println("View Special Deals");
                                                 System.out.println("The Deals which are Active Now are Given As Follows");
                                                 Deal maxKey;
                                                 Map<Integer, Deal> dealMap = zoo.getDeals();
@@ -1089,6 +1124,7 @@ public class ZooMgmt{
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 6) {
+                                                System.out.println("--------------");
                                                 System.out.println("Visiting Animals");
                                                 while (true) {
                                                     if (visitor.getMembership() != 0) {
@@ -1144,10 +1180,12 @@ public class ZooMgmt{
                                                                         totalVisitorsVisitedAnimalsIncluded++;
                                                                         break;
                                                                     } else {
+                                                                        System.out.println("--------------");
                                                                         System.out.println("You Entered Wrong Command, Hence Exited");
                                                                     }
                                                                 }
                                                             } else {
+                                                                System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                                 break;
                                                             }
@@ -1162,6 +1200,7 @@ public class ZooMgmt{
                                             } else if (thirdChoiceV == 7) {
                                                 while (true) {
                                                     if (visitor.getMembership() != 0) {
+                                                        System.out.println("--------------");
                                                         System.out.println("Visiting Attraction");
                                                         Attraction maxKey = null;
                                                         Map<Integer, Attraction> attractionMap = zoo.getAttractions();
@@ -1200,6 +1239,7 @@ public class ZooMgmt{
                                                                         break;
                                                                     }
                                                                 } else {
+                                                                    System.out.println("--------------");
                                                                     System.out.println("Attraction is Closed, Please Come After It Gets Open");
                                                                     System.out.println("Write 1 for Choosing Another Attraction");
                                                                     System.out.println("Write 2 for Exiting");
@@ -1211,10 +1251,12 @@ public class ZooMgmt{
                                                                     } else if (fifthChoiceV == 2) {
                                                                         break;
                                                                     } else {
+                                                                        System.out.println("--------------");
                                                                         System.out.println("Wrong Command Try Again");
                                                                     }
                                                                 }
                                                             } else {
+                                                                System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                                 break;
                                                             }
@@ -1229,12 +1271,14 @@ public class ZooMgmt{
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 8) {
+                                                System.out.println("--------------");
                                                 System.out.println("Enter Your Feedback");
                                                 String feedback = sc.nextLine();
                                                 zoo.addFeedback(feedbackId, feedback);
                                                 System.out.println("Your Feedback is Added with ID : " + feedbackId);
                                                 feedbackId++;
                                             } else if (thirdChoiceV == 9) {
+                                                System.out.println("--------------");
                                                 System.out.println("Recharge Your Balance:");
                                                 System.out.println("Your Current Balance is : " + visitor.getBalance());
                                                 System.out.println("Enter the Amount");
@@ -1243,9 +1287,11 @@ public class ZooMgmt{
                                                 recharge += visitor.getBalance();
                                                 visitor.setBalance(recharge);
                                             } else if (thirdChoiceV == 10) {
+                                                System.out.println("--------------");
                                                 System.out.println("Exited Successfully");
                                                 break;
                                             } else {
+                                                System.out.println("--------------");
                                                 System.out.println("Wrong Command Try Again");
                                             }
                                         }
@@ -1253,11 +1299,13 @@ public class ZooMgmt{
                                 }
                                 if (flag == 0) {
                                     if (tryLogin > 0) {
+                                        System.out.println("--------------");
                                         System.out.println("Either Username or Password is Wrong, Try Again");
                                         System.out.println("Tries Left : " + tryLogin);
                                         tryLogin--;
                                         continue;
                                     } else {
+                                        System.out.println("--------------");
                                         System.out.println("You Don't Know Either Username or Password");
                                         System.out.println("Therefore Exited");
                                         break;
@@ -1273,12 +1321,14 @@ public class ZooMgmt{
                         break;
                     }
                     else {
+                        System.out.println("--------------");
                         System.out.println("Entered Wrong Command Try Again");
                     }
                 }
 
             }
             else if (firstChoice == 3){
+                System.out.println("--------------");
                 System.out.println("Thanks for Visiting");
                 break;
             }
