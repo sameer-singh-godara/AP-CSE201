@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 
-public class ZooMgmt{
+public class ZooTopia {
     public static void main(String[] args) {
         int attractionId = 0;
         int animalId = 0;
@@ -20,6 +20,41 @@ public class ZooMgmt{
         System.out.println("Welcome to Zoo");
         String username = "admin";
         String password = "admin123";
+
+        Mammal lion = new Mammal("Lion", animalId, "It lives in Den", "Roar");
+        animalId++;
+        zoo.addMammal(lion);
+        Mammal monkey = new Mammal("Monkey", animalId, "It lives in Trees", "Hehehe");
+        animalId++;
+        zoo.addMammal(monkey);
+
+        Reptile snake = new Reptile("Snake", animalId, "It Slides It doesn't has Legs", "Ssshhhh");
+        animalId++;
+        zoo.addReptile(snake);
+        Reptile lizard = new Reptile("Lizard", animalId, "It Eats Mosquito", "sssssss");
+        animalId++;
+        zoo.addReptile(lizard);
+
+        Amphibian frog = new Amphibian("Frog", animalId, "It lives in Pond", "trtrtr");
+        animalId++;
+        zoo.addAmphibian(frog);
+        Amphibian tortoise = new Amphibian("Tortoise", animalId, "It Lives for very long Years", "tortoise sound");
+        animalId++;
+        zoo.addAmphibian(tortoise);
+
+        Discount minor = new Discount("MINOR10", 0, 18,10, discountId, 1);
+        discountId++;
+        Discount senior = new Discount("SENIOR20", 60, Integer.MAX_VALUE,20, discountId, 1);
+        discountId++;
+        zoo.addDiscount(minor);
+        zoo.addDiscount(senior);
+
+        Deal two = new Deal(2,15, dealId, 1);
+        dealId++;
+        Deal three = new Deal(3,30, dealId, 1);
+        dealId++;
+        zoo.addDeal(two);
+        zoo.addDeal(three);
 
 
 
