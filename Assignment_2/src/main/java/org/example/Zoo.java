@@ -108,7 +108,7 @@ public class Zoo{
 
     public boolean isValidEmail(String email) {
         // Define a regular expression for a valid email address format.
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
         if (email.matches(regex)) {
             return true;
