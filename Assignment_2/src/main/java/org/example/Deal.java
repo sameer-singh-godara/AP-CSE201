@@ -2,7 +2,7 @@ package org.example;
 
 public class Deal extends Offer {
     private int minimumTicket;
-    private int percentage;
+    private float percentage;
     private int id;
     private int isOpen;
 
@@ -22,12 +22,12 @@ public class Deal extends Offer {
     }
 
     @Override
-    public int getPercentage() {
+    public float getPercentage() {
         return percentage;
     }
 
     @Override
-    public void setPercentage(int percentage) {
+    public void setPercentage(float percentage) {
         this.percentage = percentage;
     }
 
@@ -49,5 +49,10 @@ public class Deal extends Offer {
     @Override
     public void setIsOpen(int isOpen) {
         this.isOpen = isOpen;
+    }
+
+    @Override
+    public String toString() {
+        return "Minimum Ticket: " + this.getMinimumTicket() + " ; Percentage Discount: " + this.getPercentage();
     }
 }

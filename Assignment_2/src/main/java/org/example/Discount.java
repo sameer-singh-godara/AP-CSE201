@@ -4,7 +4,7 @@ public class Discount extends Offer {
     private String code;
     private int lowerAge;
     private int upperAge;
-    private int percentage;
+    private float percentage;
     private int id;
     private int isOpen;
 
@@ -43,12 +43,12 @@ public class Discount extends Offer {
     }
 
     @Override
-    public int getPercentage() {
+    public float getPercentage() {
         return percentage;
     }
 
     @Override
-    public void setPercentage(int percentage) {
+    public void setPercentage(float percentage) {
         this.percentage = percentage;
     }
 
@@ -70,5 +70,10 @@ public class Discount extends Offer {
     @Override
     public void setIsOpen(int isOpen) {
         this.isOpen = isOpen;
+    }
+
+    @Override
+    public String toString() {
+        return "Discount Percentage: " + this.getPercentage() + "% ; Coupon-Code: " + this.getCode();
     }
 }

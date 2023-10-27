@@ -85,4 +85,9 @@ public class Attraction implements Events{
     public void setNumberOfVisitors(int numberOfVisitors) {
         this.numberOfVisitors = numberOfVisitors;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + getId() + " ; Name: " + getName();
+    }
 }

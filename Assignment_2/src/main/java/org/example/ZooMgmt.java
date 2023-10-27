@@ -10,7 +10,7 @@ public class ZooMgmt{
         int discountId = 0;
         int dealId = 0;
         int feedbackId = 0;
-        int revenue = 0;
+        float revenue = 0;
         int totalVisitorsVisited = 0;
         int totalVisitorsVisitedAnimalsIncluded = 0;
         int tryLogin = 5;
@@ -27,6 +27,7 @@ public class ZooMgmt{
             System.out.println("1. Enter As Admin");
             System.out.println("2. Enter As Visitor");
             System.out.println("3. Exit");
+            System.out.println("Enter The Your Choice");
             Scanner sc = new Scanner(System.in);
             int firstChoice = sc.nextInt();
             sc.nextLine();
@@ -50,6 +51,7 @@ public class ZooMgmt{
                             System.out.println("6. View Visitor Stats");
                             System.out.println("7. View Feedback");
                             System.out.println("8. Exit");
+                            System.out.println("Enter The Your Choice");
                             int secondChoiceA = sc.nextInt();
                             sc.nextLine();
                             if (secondChoiceA == 1) {
@@ -61,7 +63,7 @@ public class ZooMgmt{
                                     System.out.println("3. Remove Attraction");
                                     System.out.println("4. View All Attraction");
                                     System.out.println("5. Exit");
-
+                                    System.out.println("Enter The Your Choice");
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
 
@@ -88,7 +90,7 @@ public class ZooMgmt{
                                             System.out.println("3. Update Price");
                                             System.out.println("4. Update Availability");
                                             System.out.println("5. Exit");
-
+                                            System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
                                             if (fourthChoiceA == 1) {
@@ -144,9 +146,9 @@ public class ZooMgmt{
                                             maxKey = entry.getValue();
                                             if (maxKey != null) {
                                                 if (maxKey.isOpen() == 1) {
-                                                    System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName() + " - Open");
+                                                    System.out.println(maxKey + " ; Open");
                                                 } else if (maxKey.isOpen() == 0) {
-                                                    System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName() + " - Closed");
+                                                    System.out.println(maxKey + " ; Closed");
                                                 }
                                             }
                                         }
@@ -169,6 +171,7 @@ public class ZooMgmt{
                                     System.out.println("4. View All Animals");
                                     System.out.println("5. Exit");
 
+                                    System.out.println("Enter The Your Choice");
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
 
@@ -184,6 +187,7 @@ public class ZooMgmt{
                                         System.out.println("1. Mammal");
                                         System.out.println("2. Reptile");
                                         System.out.println("3. Amphibian");
+                                        System.out.println("Enter The Your Choice");
                                         int animalType = sc.nextInt();
                                         sc.nextLine();
                                         while (true) {
@@ -214,7 +218,7 @@ public class ZooMgmt{
                                             System.out.println("2. Update Description");
                                             System.out.println("3. Update Sound");
                                             System.out.println("4. Exit");
-
+                                            System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
                                             if (fourthChoiceA == 1) {
@@ -242,21 +246,6 @@ public class ZooMgmt{
                                                 sc.nextLine();
                                                 zoo.updateAnimalSound(idInput, soundNewAnimal);
                                             } else if (fourthChoiceA == 4) {
-                                                System.out.println("Animals in the Zoo are as follows:");
-                                                Animal maxKey = null;
-                                                Map<Integer, Animal> animalMap = zoo.getAnimals();
-                                                HashMap<Integer, Animal> animals = zoo.getAnimals();
-                                                for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
-                                                    maxKey = entry.getValue();
-                                                    if (maxKey != null) {
-                                                        System.out.println("ID: " + entry.getKey() + ". " + maxKey.getName());
-                                                    }
-                                                }
-                                                if (maxKey.equals(null)){
-                                                    System.out.println("There Are No Animals in the Zoo");
-                                                }
-                                                
-                                            } else if (fourthChoiceA == 5) {
                                                 break;
                                             } else {
                                                 System.out.println("Try Again Wrong Command");
@@ -269,7 +258,17 @@ public class ZooMgmt{
                                         sc.nextLine();
                                         zoo.removeAnimal(idInput);
                                     } else if (thirdChoiceA == 4) {
-                                        System.out.println("You have successfully gone to back menu");
+                                        System.out.println("Animals in the Zoo are as follows:");
+                                        Animal maxKey = null;
+                                        Map<Integer, Animal> animalMap = zoo.getAnimals();
+                                        HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                        for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
+                                            maxKey = entry.getValue();
+                                            if (maxKey != null) {
+                                                System.out.println(maxKey);
+                                            }
+                                        }
+                                    } else if (thirdChoiceA == 5) {
                                         break;
                                     } else {
                                         System.out.println("Wrong Command Try Again");
@@ -283,7 +282,7 @@ public class ZooMgmt{
                                     System.out.println("1. Set Price");
                                     System.out.println("2. Set Availability");
                                     System.out.println("3. Exit");
-
+                                    System.out.println("Enter The Your Choice");
                                     int fourthChoiceA = sc.nextInt();
                                     sc.nextLine();
                                     if (fourthChoiceA == 1) {
@@ -314,7 +313,9 @@ public class ZooMgmt{
                                     System.out.println("1. Add New Discount");
                                     System.out.println("2. Update Discount");
                                     System.out.println("3. Remove Discount");
-                                    System.out.println("4. Exit");
+                                    System.out.println("4. View All Discounts");
+                                    System.out.println("5. Exit");
+                                    System.out.println("Enter The Your Choice");
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
                                     if (thirdChoiceA == 1) {
@@ -328,7 +329,9 @@ public class ZooMgmt{
                                             System.out.println("1. Set Lower Age (Else it Would be Set to 0)");
                                             System.out.println("2. Set Upper Age (Else it Would be Set to Maximum Value of Integer)");
                                             System.out.println("3. Exit");
+                                            System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
+                                            sc.nextLine();
                                             if (fourthChoiceA == 1) {
                                                 System.out.println("Enter The Lower Age Limit");
                                                 int lowerAge = sc.nextInt();
@@ -359,6 +362,8 @@ public class ZooMgmt{
                                             System.out.println("2. Update Upper Limit of Discount");
                                             System.out.println("3. Update Percentage of Discount");
                                             System.out.println("4. Update Validity of Discount");
+                                            System.out.println("5. Exit");
+                                            System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
                                             if (fourthChoiceA == 1) {
@@ -401,6 +406,22 @@ public class ZooMgmt{
                                         String couponCode = sc.nextLine();
                                         zoo.removeDiscount(couponCode);
                                     } else if (thirdChoiceA == 4) {
+                                        System.out.println("View Discounts");
+                                        Discount maxKey;
+                                        Map<String, Discount> discountMap = zoo.getDiscounts();
+                                        HashMap<String, Discount> discounts = zoo.getDiscounts();
+                                        for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
+                                            maxKey = entry.getValue();
+                                            if (maxKey != null) {
+                                                if (maxKey.getIsOpen() == 1){
+                                                    System.out.println(maxKey + " ; Age-Range: [" + maxKey.getLowerAge() + " to " + maxKey.getUpperAge() + "] ; Open" );
+                                                }
+                                                else {
+                                                    System.out.println(maxKey + " ; Age-Range: [" + maxKey.getLowerAge() + " to " + maxKey.getUpperAge() + "] ; Closed" );
+                                                }
+                                            }
+                                        }
+                                    } else if (thirdChoiceA == 5) {
                                         break;
                                     } else {
                                         System.out.println("Wrong Command Try Again");
@@ -412,7 +433,9 @@ public class ZooMgmt{
                                     System.out.println("1. Add Deal");
                                     System.out.println("2. Update Deal");
                                     System.out.println("3. Remove Deal");
-                                    System.out.println("4. Exit");
+                                    System.out.println("4. View All Deals");
+                                    System.out.println("5. Exit");
+                                    System.out.println("Enter The Your Choice");
                                     int thirdChoiceA = sc.nextInt();
                                     sc.nextLine();
                                     if (thirdChoiceA == 1) {
@@ -433,6 +456,7 @@ public class ZooMgmt{
                                             System.out.println("2. Update Discount Percentage for Deal");
                                             System.out.println("3. Update Validity for Deal");
                                             System.out.println("4. Exit");
+                                            System.out.println("Enter The Your Choice");
                                             int fourthChoiceA = sc.nextInt();
                                             sc.nextLine();
                                             if (fourthChoiceA == 1) {
@@ -472,6 +496,22 @@ public class ZooMgmt{
                                         sc.nextLine();
                                         zoo.removeDeal(idInput);
                                     } else if (thirdChoiceA == 4) {
+                                        System.out.println("View Deals");
+                                        Deal maxKey;
+                                        Map<Integer, Deal> dealMap = zoo.getDeals();
+                                        HashMap<Integer, Deal> deals = zoo.getDeals();
+                                        for (Map.Entry<Integer, Deal> entry : dealMap.entrySet()) {
+                                            maxKey = entry.getValue();
+                                            if (maxKey != null) {
+                                                if (maxKey.getIsOpen() == 1){
+                                                    System.out.println("ID: " + maxKey.getId() + " ; " + maxKey + " ; Open");
+                                                }
+                                                else {
+                                                    System.out.println("ID: " + maxKey.getId() + " ; " + maxKey + " ; Closed");
+                                                }
+                                            }
+                                        }
+                                    } else if (thirdChoiceA == 5) {
                                         break;
                                     } else {
                                         System.out.println("Wrong Command Try Again");
@@ -545,6 +585,7 @@ public class ZooMgmt{
                     System.out.println("1. Register");
                     System.out.println("2. Login");
                     System.out.println("3. Exit");
+                    System.out.println("Enter The Your Choice");
                     int secondChoiceV = sc.nextInt();
                     sc.nextLine();
                     if (secondChoiceV == 1){
@@ -627,7 +668,7 @@ public class ZooMgmt{
                                             System.out.println("8. Leave Feedback");
                                             System.out.println("9. Recharge Balance");
                                             System.out.println("10. Exit");
-
+                                            System.out.println("Enter The Your Choice");
                                             int thirdChoiceV = sc.nextInt();
                                             sc.nextLine();
 
@@ -637,6 +678,7 @@ public class ZooMgmt{
                                                     System.out.println("1. View Animals");
                                                     System.out.println("2. View Attraction");
                                                     System.out.println("3. Exit");
+                                                    System.out.println("Enter The Your Choice");
                                                     int fourthChoiceV = sc.nextInt();
                                                     sc.nextLine();
                                                     if (fourthChoiceV == 1) {
@@ -647,14 +689,14 @@ public class ZooMgmt{
                                                         for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
                                                             maxKey = entry.getValue();
                                                             if (maxKey != null) {
-                                                                System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName());
+                                                                System.out.println(maxKey);
                                                             }
                                                         }
                                                         if (maxKey != null) {
                                                             System.out.println("Enter the ID for Animal's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (animals.containsKey(fifthChoiceV)) {
-                                                                System.out.println(animals.get(fifthChoiceV).getName() + ":" + animals.get(fifthChoiceV).getDescription());
+                                                                System.out.println(animals.get(fifthChoiceV).getName() + "'s Description:" + animals.get(fifthChoiceV).getDescription());
                                                             } else {
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                             }
@@ -670,9 +712,9 @@ public class ZooMgmt{
                                                             maxKey = entry.getValue();
                                                             if (maxKey != null) {
                                                                 if (maxKey.isOpen() == 1) {
-                                                                    System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
+                                                                    System.out.println(maxKey + " - Open");
                                                                 } else if (maxKey.isOpen() == 0) {
-                                                                    System.out.println("ID: " + entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
+                                                                    System.out.println(maxKey + " - Closed");
                                                                 }
                                                             }
                                                         }
@@ -680,7 +722,7 @@ public class ZooMgmt{
                                                             System.out.println("Enter The ID for Attraction's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (attractions.containsKey(fifthChoiceV)) {
-                                                                System.out.println(attractions.get(fifthChoiceV).getName() + ":" + attractions.get(fifthChoiceV).getDescription());
+                                                                System.out.println(attractions.get(fifthChoiceV).getName() + "'s Description:" + attractions.get(fifthChoiceV).getDescription());
                                                             } else {
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
                                                             }
@@ -700,6 +742,7 @@ public class ZooMgmt{
                                                         System.out.println("1. Basic Membership (₹20)");
                                                         System.out.println("2. Premium Membership (₹50)");
                                                         System.out.println("3. Exit");
+                                                        System.out.println("Enter The Your Choice");
 
                                                         int fourthChoiceV = sc.nextInt();
                                                         sc.nextLine();
@@ -711,18 +754,18 @@ public class ZooMgmt{
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
-                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            HashMap<String, Float> discountsVisitor = new HashMap<>();
                                                             for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
                                                                 sampleDiscount = entry.getValue();
                                                                 if (sampleDiscount != null) {
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
-                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
                                                                     }
                                                                 }
                                                             }
                                                             if (sampleDiscount != null) {
-                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
                                                                     String couponInput = sc.nextLine();
@@ -766,18 +809,18 @@ public class ZooMgmt{
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
-                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            HashMap<String, Float> discountsVisitor = new HashMap<>();
                                                             for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
                                                                 sampleDiscount = entry.getValue();
                                                                 if (sampleDiscount != null) {
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
-                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
                                                                     }
                                                                 }
                                                             }
                                                             if (sampleDiscount != null) {
-                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
                                                                     String couponInput = sc.nextLine();
@@ -821,6 +864,7 @@ public class ZooMgmt{
                                                         System.out.println("Upgrade Membership, you currently have Basic Membership:");
                                                         System.out.println("1. Premium Membership (₹30) (Only the difference between both membership is to be paid)");
                                                         System.out.println("2. Exit");
+                                                        System.out.println("Enter The Your Choice");
                                                         int fourthChoiceV = sc.nextInt();
                                                         sc.nextLine();
                                                         if (fourthChoiceV == 1) {
@@ -831,18 +875,18 @@ public class ZooMgmt{
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
                                                             HashMap<String, Discount> discounts = zoo.getDiscounts();
-                                                            HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                            HashMap<String, Float> discountsVisitor = new HashMap<>();
                                                             for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
                                                                 sampleDiscount = entry.getValue();
                                                                 if (sampleDiscount != null) {
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
-                                                                        System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                        System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
                                                                     }
                                                                 }
                                                             }
                                                             if (sampleDiscount != null) {
-                                                                System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                                System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
                                                                     String couponInput = sc.nextLine();
@@ -895,6 +939,7 @@ public class ZooMgmt{
                                                     System.out.println("Enter the number of tickets");
                                                     int numberTicket = sc.nextInt();
                                                     sc.nextLine();
+
                                                     System.out.println("Select the Attraction You Want to Buy (Price will be multiplied by Number of tickets)");
                                                     Attraction maxKey = null;
                                                     int flag1 = 0;
@@ -903,13 +948,13 @@ public class ZooMgmt{
                                                     for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
                                                         maxKey = entry.getValue();
                                                         if (maxKey != null && maxKey.isOpen() == 1) {
-                                                            System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - ( ₹" + (entry.getValue()).getPrice() + ")");
+                                                            System.out.println(maxKey + " ; Price: ₹" + maxKey.getPrice());
                                                             flag1 = 1;
                                                         }
                                                     }
 
-
                                                     if (maxKey != null && flag1 == 1) {
+                                                        System.out.println("Enter The ID You Want to Choose");
                                                         int fourthChoiceV;
                                                         while (true){
                                                             fourthChoiceV = sc.nextInt();
@@ -935,18 +980,18 @@ public class ZooMgmt{
                                                         System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                         Map<String, Discount> discountMap = zoo.getDiscounts();
                                                         HashMap<String, Discount> discounts = zoo.getDiscounts();
-                                                        HashMap<String, Integer> discountsVisitor = new HashMap<>();
+                                                        HashMap<String, Float> discountsVisitor = new HashMap<>();
                                                         for (Map.Entry<String, Discount> entry : discountMap.entrySet()) {
                                                             sampleDiscount = entry.getValue();
                                                             if (sampleDiscount != null) {
                                                                 if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
-                                                                    System.out.println("(" + sampleDiscount.getPercentage() + "% Discount) - Coupon-Code : " + sampleDiscount.getCode());
+                                                                    System.out.println(sampleDiscount);
                                                                     discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
                                                                 }
                                                             }
                                                         }
                                                         if (sampleDiscount != null) {
-                                                            System.out.println("(0% Discount) - Coupon-Code : NONE");
+                                                            System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                             while (true) {
                                                                 System.out.println("Enter Coupon Code");
                                                                 String couponInput = sc.nextLine();
@@ -965,9 +1010,31 @@ public class ZooMgmt{
                                                             discountPercentage = 0;
                                                             System.out.println("There Are No Valid Coupons for You");
                                                         }
+
+
                                                         price = (price - (price*((discountPercentage)/100)));
                                                         /////////////
 
+                                                        ////////// Deal Section
+                                                        float dealPercentage = 0;
+                                                        HashMap<Integer, Deal> deals = zoo.getDeals();
+                                                        TreeSet<Integer> sortedKeys = new TreeSet<>(deals.keySet());
+                                                        Integer smallerKey = sortedKeys.lower(numberTicket);
+                                                        if (smallerKey == null) {
+                                                            System.out.println("No Deal is Applied To Your Purchase");
+                                                        }
+                                                        else if (!deals.containsKey(numberTicket) && smallerKey!=null){
+                                                            dealPercentage = deals.get(smallerKey).getPercentage();
+                                                            System.out.println(deals.get(smallerKey) + " Has been Applied To Your Purchase");
+                                                        }
+                                                        else {
+                                                            dealPercentage = deals.get(numberTicket).getPercentage();
+                                                            System.out.println(deals.get(numberTicket) + " Has been Applied To Your Purchase");
+                                                        }
+
+                                                        //////////
+
+                                                        price = ((price) - (price*(dealPercentage/100))); // after the individual discount of coupon the special deal is applied
                                                         if (visitor.getBalance() >= price) {
                                                             for (int i = 0; i < numberTicket; i++) {
                                                                 visitor.addAttractionsPurchased(attractions.get(fourthChoiceV));
@@ -991,7 +1058,7 @@ public class ZooMgmt{
 
                                                     }
                                                 } else {
-                                                    System.out.println("Go and First Buy Membership, Then come here to Visit Attraction");
+                                                    System.out.println("Go and First Buy Membership, Then come here to Buy Tickets for Attraction");
                                                 }
                                             } else if (thirdChoiceV == 4) {
                                                 System.out.println("View Discounts");
@@ -1003,7 +1070,7 @@ public class ZooMgmt{
                                                     maxKey = entry.getValue();
                                                     if (maxKey != null) {
                                                         if (maxKey.getIsOpen() == 1){
-                                                            System.out.println("Coupon-Code for " + maxKey.getPercentage() + "% Discount for Age Range [" + maxKey.getLowerAge() + " to " + maxKey.getUpperAge() + "] is : " + maxKey.getCode());
+                                                            System.out.println(maxKey + " ; Age-Range: [" + maxKey.getLowerAge() + " to " + maxKey.getUpperAge() + "]");
                                                         }
                                                     }
                                                 }
@@ -1017,17 +1084,21 @@ public class ZooMgmt{
                                                     maxKey = entry.getValue();
                                                     if (maxKey != null) {
                                                         if (maxKey.getIsOpen() == 1){
-                                                            System.out.println("Deal ID: " + maxKey.getId() + " - Purchasing " + maxKey.getMinimumTicket() + " Tickets or More Than " + maxKey.getMinimumTicket() + " Tickets, You will get Discount of " + maxKey.getPercentage() + "% on Your Purchase Amount");
+                                                            System.out.println("ID: " + maxKey.getId() + " ; " + maxKey);
                                                         }
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 6) {
+                                                System.out.println("Visiting Animals");
                                                 while (true) {
                                                     if (visitor.getMembership() != 0) {
                                                         System.out.println("Animals in the Zoo are as follows");
                                                         Animal maxKey = null;
                                                         Map<Integer, Animal> animalMap = zoo.getAnimals();
                                                         HashMap<Integer, Animal> animals = zoo.getAnimals();
+                                                        HashMap<Integer, Mammal> mammals = zoo.getMammals();
+                                                        HashMap<Integer, Reptile> reptiles = zoo.getReptiles();
+                                                        HashMap<Integer, Amphibian> amphibians = zoo.getAmphibians();
                                                         for (Map.Entry<Integer, Animal> entry : animalMap.entrySet()) {
                                                             maxKey = entry.getValue();
                                                             if (maxKey != null) {
@@ -1035,7 +1106,7 @@ public class ZooMgmt{
                                                             }
                                                         }
                                                         if (maxKey != null) {
-                                                            System.out.println("Which Animal Do You Want to Visit (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                            System.out.println("Which Animal Do You Want to Visit, Enter the ID of Animal (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fourthChoiceV = sc.nextInt();
                                                             if (animals.containsKey(fourthChoiceV)) {
                                                                 while (true) {
@@ -1045,8 +1116,28 @@ public class ZooMgmt{
                                                                     System.out.println("3. Exit");
                                                                     int fifthChoiceV = sc.nextInt();
                                                                     if (fifthChoiceV == 1) {
+                                                                        if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
+                                                                            System.out.println(mammals.get(fourthChoiceV).getName() + " : " + mammals.get(fourthChoiceV).getFeed());
+                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
+                                                                            System.out.println(reptiles.get(fourthChoiceV).getName() + " : " + reptiles.get(fourthChoiceV).getFeed());
+                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
+                                                                            System.out.println(amphibians.get(fourthChoiceV).getName() + " : " + amphibians.get(fourthChoiceV).getFeed());
+                                                                        }
+                                                                        System.out.println("The above Method is Overridden in Sub Class");
+                                                                        System.out.println("The following Method is the Actual in Parent Class");
+                                                                        System.out.println("Hence Polymorphism is Used");
                                                                         System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getFeed());
                                                                     } else if (fifthChoiceV == 2) {
+                                                                        if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
+                                                                            System.out.println(mammals.get(fourthChoiceV).getName() + " : " + mammals.get(fourthChoiceV).getDescription());
+                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
+                                                                            System.out.println(reptiles.get(fourthChoiceV).getName() + " : " + reptiles.get(fourthChoiceV).getDescription());
+                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
+                                                                            System.out.println(amphibians.get(fourthChoiceV).getName() + " : " + amphibians.get(fourthChoiceV).getDescription());
+                                                                        }
+                                                                        System.out.println("The above Method is Overridden in Sub Class");
+                                                                        System.out.println("The following Method is the Actual in Parent Class");
+                                                                        System.out.println("Hence Polymorphism is Used");
                                                                         System.out.println(animals.get(fourthChoiceV).getName() + " : " + animals.get(fourthChoiceV).getDescription());
                                                                     } else if (fifthChoiceV == 3) {
                                                                         System.out.println("Going Back Successfully");
@@ -1065,67 +1156,75 @@ public class ZooMgmt{
                                                         }
                                                     } else {
                                                         System.out.println("Go and First Buy Membership, Then come here To Visit Animals");
+                                                        break;
                                                     }
                                                 }
                                             } else if (thirdChoiceV == 7) {
                                                 while (true) {
-                                                    System.out.println("View Attraction");
-                                                    Attraction maxKey = null;
-                                                    Map<Integer, Attraction> attractionMap = zoo.getAttractions();
-                                                    HashMap<Integer, Attraction> attractions = zoo.getAttractions();
-                                                    for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
-                                                        maxKey = entry.getValue();
-                                                        if (maxKey != null) {
-                                                            if (maxKey.isOpen() == 1) {
-                                                                System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Open");
-                                                            } else if (maxKey.isOpen() == 0) {
-                                                                System.out.println(entry.getKey() + ". " + (entry.getValue()).getName() + " - Closed");
+                                                    if (visitor.getMembership() != 0) {
+                                                        System.out.println("Visiting Attraction");
+                                                        Attraction maxKey = null;
+                                                        Map<Integer, Attraction> attractionMap = zoo.getAttractions();
+                                                        HashMap<Integer, Attraction> attractions = zoo.getAttractions();
+                                                        for (Map.Entry<Integer, Attraction> entry : attractionMap.entrySet()) {
+                                                            maxKey = entry.getValue();
+                                                            if (maxKey != null) {
+                                                                if (maxKey.isOpen() == 1) {
+                                                                    System.out.println(maxKey + " ; Open");
+                                                                } else if (maxKey.isOpen() == 0) {
+                                                                    System.out.println(maxKey + " ; Closed");
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                    if (maxKey != null) {
-                                                        System.out.println("Enter The Attraction ID You Want To Visit (To Exit this section, Enter Number other than the ID's mentioned)");
-                                                        int fourthChoiceV = sc.nextInt();
-                                                        sc.nextLine();
-                                                        if (attractions.containsKey(fourthChoiceV)) {
-                                                            if (attractions.get(fourthChoiceV).isOpen() == 1) {
-                                                                if ((visitor.getAttractionsPurchased()).contains(attractions.get(fourthChoiceV)) || visitor.getMembership() == 2) {
-                                                                    if (visitor.getMembership() == 2) {
-                                                                        System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Thank you for being Premium Member");
+                                                        if (maxKey != null) {
+                                                            System.out.println("Enter The Attraction ID You Want To Visit, Enter the ID of Attraction (To Exit this section, Enter Number other than the ID's mentioned)");
+                                                            int fourthChoiceV = sc.nextInt();
+                                                            sc.nextLine();
+                                                            if (attractions.containsKey(fourthChoiceV)) {
+                                                                if (attractions.get(fourthChoiceV).isOpen() == 1) {
+                                                                    if ((visitor.getAttractionsPurchased()).contains(attractions.get(fourthChoiceV)) || visitor.getMembership() == 2) {
+                                                                        if (visitor.getMembership() == 2) {
+                                                                            System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Thank you for being Premium Member");
+                                                                        } else {
+                                                                            System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
+                                                                            (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
+                                                                            // System.out.println(visitor.getAttractionsPurchased());
+                                                                        }
+                                                                        totalVisitorsVisited++;
+                                                                        totalVisitorsVisitedAnimalsIncluded++;
+                                                                        int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
+                                                                        numberOfVisitorsForAttraction++;
+                                                                        attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
                                                                     } else {
-                                                                        System.out.println("Hi, " + visitor.getName() + " Sir, Welcome to " + attractions.get(fourthChoiceV).getName() + "! Your 1 Ticket is Used for " + attractions.get(fourthChoiceV).getName() + " Please buy the Premium Subscription Sir for Better Service");
-                                                                        (visitor.getAttractionsPurchased()).remove(attractions.get(fourthChoiceV));
-                                                                        // System.out.println(visitor.getAttractionsPurchased());
+                                                                        System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
+                                                                        break;
                                                                     }
-                                                                    totalVisitorsVisited++;
-                                                                    totalVisitorsVisitedAnimalsIncluded++;
-                                                                    int numberOfVisitorsForAttraction = attractions.get(fourthChoiceV).getNumberOfVisitors();
-                                                                    numberOfVisitorsForAttraction++;
-                                                                    attractions.get(fourthChoiceV).setNumberOfVisitors(numberOfVisitorsForAttraction);
                                                                 } else {
-                                                                    System.out.println("Go and First Buy Ticket, Then Come and Visit Any Attraction");
-                                                                    break;
+                                                                    System.out.println("Attraction is Closed, Please Come After It Gets Open");
+                                                                    System.out.println("Write 1 for Choosing Another Attraction");
+                                                                    System.out.println("Write 2 for Exiting");
+                                                                    System.out.println("Enter The Your Choice");
+                                                                    int fifthChoiceV = sc.nextInt();
+                                                                    sc.nextLine();
+                                                                    if (fifthChoiceV == 1) {
+                                                                        System.out.println("Try to Choose the Attraction which is open");
+                                                                    } else if (fifthChoiceV == 2) {
+                                                                        break;
+                                                                    } else {
+                                                                        System.out.println("Wrong Command Try Again");
+                                                                    }
                                                                 }
                                                             } else {
-                                                                System.out.println("Attraction is Closed, Please Come After It Gets Open");
-                                                                System.out.println("Write 1 for Choosing Another Attraction");
-                                                                System.out.println("Write 2 for Exiting");
-                                                                int fifthChoiceV = sc.nextInt();
-                                                                sc.nextLine();
-                                                                if (fifthChoiceV == 1) {
-                                                                    System.out.println("Try to Choose the Attraction which is open");
-                                                                } else if (fifthChoiceV == 2) {
-                                                                    break;
-                                                                } else {
-                                                                    System.out.println("Wrong Command Try Again");
-                                                                }
+                                                                System.out.println("You Entered Wrong Command, Hence Exited");
+                                                                break;
                                                             }
                                                         } else {
-                                                            System.out.println("You Entered Wrong Command, Hence Exited");
+                                                            System.out.println("There are no Attraction in the Zoo");
                                                             break;
                                                         }
-                                                    } else {
-                                                        System.out.println("There are no Attraction in the Zoo");
+                                                    }
+                                                    else {
+                                                        System.out.println("Go and First Buy Membership, Then come here To Visit Attraction");
                                                         break;
                                                     }
                                                 }

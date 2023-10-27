@@ -2,9 +2,9 @@ package org.example;
 
 public abstract class Offer {
 
-    public abstract int getPercentage();
+    public abstract float getPercentage();
 
-    public abstract void setPercentage(int percentage);
+    public abstract void setPercentage(float percentage);
 
     public abstract int getId();
 

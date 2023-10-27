@@ -12,4 +12,20 @@ public class Mammal extends Animal{
     public String getType() {
         return this.type;
     }
+
+
+    @Override
+    public String toString() {
+        return "ID: " + super.getId() + " ; Name: " + super.getName() + " ; Type: " + this.type;
+    }
+
+    @Override
+    public String getFeed() {
+        return "Sound of this " + this.getType() + " named " + super.getName() + " is" + super.getFeed();
+    }
+
+    @Override
+    public String getDescription() {
+        return "Description of this " + this.getType() + " named " + super.getName() + " is" + super.getDescription();
+    }
 }
