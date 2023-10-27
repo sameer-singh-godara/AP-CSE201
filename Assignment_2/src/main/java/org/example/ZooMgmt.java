@@ -21,6 +21,7 @@ public class ZooMgmt{
         String username = "admin";
         String password = "admin123";
 
+        
 
         while(true){
             System.out.println("--------------");
@@ -746,7 +747,7 @@ public class ZooMgmt{
                                                             System.out.println("Enter the ID for Animal's Description You Want To See (To Exit this section, Enter Number other than the ID's mentioned)");
                                                             int fifthChoiceV = sc.nextInt();
                                                             if (animals.containsKey(fifthChoiceV)) {
-                                                                System.out.println(animals.get(fifthChoiceV).getName() + "'s Description:" + animals.get(fifthChoiceV).getDescription());
+                                                                System.out.println(animals.get(fifthChoiceV).getName() + "'s Description: " + animals.get(fifthChoiceV).getDescription());
                                                             } else {
                                                                 System.out.println("--------------");
                                                                 System.out.println("You Entered Wrong Command, Hence Exited");
@@ -806,6 +807,7 @@ public class ZooMgmt{
                                                             float price = 20;
                                                             float discountPercentage;
                                                             Discount sampleDiscount = null;
+                                                            int flag2 = 0;
                                                             System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
                                                             Map<String, Discount> discountMap = zoo.getDiscounts();
@@ -817,10 +819,11 @@ public class ZooMgmt{
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
                                                                         System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                        flag2 = 1;
                                                                     }
                                                                 }
                                                             }
-                                                            if (sampleDiscount != null) {
+                                                            if (sampleDiscount != null && flag2 == 1) {
                                                                 System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
@@ -861,6 +864,7 @@ public class ZooMgmt{
                                                             ////////// Discount Coupon Section
                                                             float price = 50;
                                                             float discountPercentage;
+                                                            int flag2 = 0;
                                                             Discount sampleDiscount = null;
                                                             System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
@@ -873,10 +877,11 @@ public class ZooMgmt{
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
                                                                         System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                        flag2 = 1;
                                                                     }
                                                                 }
                                                             }
-                                                            if (sampleDiscount != null) {
+                                                            if (sampleDiscount != null && flag2 == 1) {
                                                                 System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
@@ -930,6 +935,7 @@ public class ZooMgmt{
                                                             ////////// Discount Coupon Section
                                                             float price = 30;
                                                             float discountPercentage;
+                                                            int flag2 = 0;
                                                             Discount sampleDiscount = null;
                                                             System.out.println("--------------");
                                                             System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
@@ -942,10 +948,11 @@ public class ZooMgmt{
                                                                     if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
                                                                         System.out.println(sampleDiscount);
                                                                         discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                        flag2 = 1;
                                                                     }
                                                                 }
                                                             }
-                                                            if (sampleDiscount != null) {
+                                                            if (sampleDiscount != null && flag2 == 1) {
                                                                 System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                                 while (true) {
                                                                     System.out.println("Enter Coupon Code");
@@ -1038,6 +1045,7 @@ public class ZooMgmt{
                                                         ////////// Discount Coupon Section
                                                         float price = numberTicket * attractions.get(fourthChoiceV).getPrice();
                                                         float discountPercentage;
+                                                        int flag2 = 0;
                                                         Discount sampleDiscount = null;
                                                         System.out.println("--------------");
                                                         System.out.println("These Are The Valid Coupons Available for You Choose Any One of Them (CASE-SENSITIVE)");
@@ -1050,10 +1058,11 @@ public class ZooMgmt{
                                                                 if (sampleDiscount.getIsOpen() == 1 && sampleDiscount.getUpperAge()>visitor.getAge() && sampleDiscount.getLowerAge()<visitor.getAge()){
                                                                     System.out.println(sampleDiscount);
                                                                     discountsVisitor.put(sampleDiscount.getCode(), sampleDiscount.getPercentage());
+                                                                    flag = 1;
                                                                 }
                                                             }
                                                         }
-                                                        if (sampleDiscount != null) {
+                                                        if (sampleDiscount != null && flag2 == 1) {
                                                             System.out.println("Discount Percentage: 0% ; Coupon-Code: NONE");
                                                             while (true) {
                                                                 System.out.println("Enter Coupon Code");
@@ -1183,28 +1192,9 @@ public class ZooMgmt{
                                                                     System.out.println("3. Exit");
                                                                     int fifthChoiceV = sc.nextInt();
                                                                     if (fifthChoiceV == 1) {
-                                                                        if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
-                                                                            System.out.println(mammals.get(fourthChoiceV).getFeed());
-                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
-                                                                            System.out.println(reptiles.get(fourthChoiceV).getFeed());
-                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
-                                                                            System.out.println(amphibians.get(fourthChoiceV).getFeed());
-                                                                        }
-//                                                                        System.out.println("The above Method is Overridden in Sub Class");
-//                                                                        System.out.println("The following Method is the Actual in Parent Class");
-//                                                                        System.out.println("Hence Polymorphism is Used");
+                                                                        System.out.println(animals.get(fourthChoiceV).getFeed());
                                                                     } else if (fifthChoiceV == 2) {
-                                                                        if (animals.get(fourthChoiceV).equals(zoo.getMammals().get(fourthChoiceV))) {
-                                                                            mammals.get(fourthChoiceV).description();
-                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getReptiles().get(fourthChoiceV))) {
-                                                                            reptiles.get(fourthChoiceV).description();
-                                                                        }else if (animals.get(fourthChoiceV).equals(zoo.getAmphibians().get(fourthChoiceV))) {
-                                                                            amphibians.get(fourthChoiceV).description();
-                                                                        }
-//                                                                        System.out.println("The above Method is Overridden in Sub Class");
-//                                                                        System.out.println("The following Method is the Actual in Parent Class");
-//                                                                        System.out.println("Hence Polymorphism is Used");
-
+                                                                        animals.get(fourthChoiceV).description();
                                                                     } else if (fifthChoiceV == 3) {
                                                                         System.out.println("Going Back Successfully");
                                                                         totalVisitorsVisitedAnimalsIncluded++;
